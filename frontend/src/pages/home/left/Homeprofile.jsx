@@ -8,7 +8,7 @@ import {useSelector} from 'react-redux';
 import { Chat,AccountCircle, ExitToApp,Settings,Home} from "@material-ui/icons";
 const Homeprofile = () => {
 
-    const pf="https://notesharingbackend-ankitkr437.onrender.com/images/";
+    const pf="https://pict-notes.onrender.com/";
   
     const {currentUser,isFetching} = useSelector((state)=>state.user)
     const user=currentUser
