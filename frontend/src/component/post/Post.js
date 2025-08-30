@@ -17,7 +17,7 @@ import { publicRequest } from "../../requestMethods";
 const Post = ({ note, postUser }) => {
   const { currentUser } = useSelector((state) => state.user);
   const user = currentUser;
-  const pf = "https://notesharingbackend-ankitkr437.onrender.com/images/";
+  const pf = "https://pict-notes.onrender.com/";
   const [like, setlike] = useState(note.likes.length);
   const [islike, setislike] = useState(false);
   const [isseen, setisseen] = useState(false);
