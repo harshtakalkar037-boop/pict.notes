@@ -1,8 +1,8 @@
 import axios from "axios";
 const LocalBASE_URL="http://localhost:8000/api/";
-const BASE_URL = "https://pictnotes-backend.onrender.com/api/";  
+const BASE_URL = "https://pict-notes.onrender.com/api/";  
 
-export const pf = "https://pictnotes-backend.onrender.com/images";  
+export const pf = "https://pict-notes.onrender.com/images";  
 
 export const publicRequest = axios.create({
   baseURL: BASE_URL,
