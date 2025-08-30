@@ -21,7 +21,7 @@ export default function Messenger() {
 
   useEffect(() => {
     // https://notesharing-socket.onrender.com/
-    const EndPoint="https://notesharing-socket.onrender.com/";
+    const EndPoint="https://pict-notes-socket.onrender.com/";
     socket.current = io(EndPoint);
     socket.current.on("getMessage", (data) => {
       setArrivalMessage({
