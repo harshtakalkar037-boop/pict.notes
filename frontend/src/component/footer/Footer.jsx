@@ -23,7 +23,7 @@ const Footer = () => {
           </div>
 
           <div className="Contact-contribute-container">
-              <a href="mailto:harshtakalkar037@gmail.com" className="about-us-title" target="blank">Contact Us</a>   
+              <a href="https://github.com/harshtakalkar037-boop/pict.notes" className="about-us-title" target="blank">Contact Us</a>   
               <a href="https://github.com/harshtakalkar037-boop/pict.notes" className="about-us-title" target="blank">Want to contribute</a>   
           </div>
           </div>
