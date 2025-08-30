@@ -23,14 +23,14 @@ const Footer = () => {
           </div>
 
           <div className="Contact-contribute-container">
-              <a href="mailto:ankitloharshi@gmail.com" className="about-us-title" target="blank">Contact Us</a>   
-              <a href="https://github.com/ankitkr437/NoteSharing" className="about-us-title" target="blank">Want to contribute</a>   
+              <a href="mailto:harshtakalkar037@gmail.com" className="about-us-title" target="blank">Contact Us</a>   
+              <a href="https://github.com/harshtakalkar037-boop/pict.notes" className="about-us-title" target="blank">Want to contribute</a>   
           </div>
           </div>
 
           <div className="footer-bottom-container">
             <p className="copyright">
-            Copyright © 2023 NoteSharing. All Rights Reserved
+            Copyright © 2025 NoteSharing. All Rights Reserved
             </p>
             <div className="footer-link">
               <Link to="/" className="footer-link-item" style={{textDecoration:"none"}}>
