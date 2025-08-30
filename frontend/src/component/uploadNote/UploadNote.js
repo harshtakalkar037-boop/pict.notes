@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
 }));
 const UploadNote = () => {
   const {currentUser:user} = useSelector((state)=>state.user)
-  const pf="https://pict-notes.onrender.com/images/";
+  const pf="https://pict-notes.onrender.com/";
 
   const ShowForm = useRef();
   const notename = useRef();
