@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
-  "author": "ankit kumar",
+  "author": "harsh takalkar",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.24.0",
