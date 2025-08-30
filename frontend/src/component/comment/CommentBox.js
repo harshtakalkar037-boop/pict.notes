@@ -5,7 +5,7 @@ import { publicRequest } from '../../requestMethods';
   
  const CommentBox = ({userinfo,text}) => {
 
-  const pf="https://notesharingbackend-ankitkr437.onrender.com/images/";
+  const pf="https://pict-notes.onrender.com/images/";
   const [user,setuser]=useState({})
   const [isfetchuser,setisfetchuser]=useState(false)
   useEffect(()=>{
