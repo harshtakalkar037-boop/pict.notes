@@ -1,74 +1,100 @@
- 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-.topbar-right-Img-left{
-  display: none;
-}
-.topbar-right-Img-left-link{
-  display: none;
-}
-.topbar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 9vh;
+/* Sidebar Styles */
+.sidebar {
   position: fixed;
-  background-image: linear-gradient(to right, rgb(190, 192, 196), rgb(77, 77, 83));
-  z-index: 6;
-  box-shadow: 0px 1px 3px rgb(25, 37, 25);
-}
-.topbar-left {
-  flex: 5;
+  left: 0;
+  top: 0;
+  width: 260px;
+  height: 100vh;
+  background: #181a20;
+  color: #e0e0e0;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  box-shadow: 2px 0 12px rgba(0,0,0,0.2);
+  z-index: 100;
 }
-.topbar-title {
-  font-family: "Shizuru", cursive;
-  font-size: 28px;
-  font-weight: 500;
-  cursor: pointer;
-  color: black;
-}
- 
-.topbar-left-icon {
-  margin-right: 5px;
-  cursor: pointer;
-  margin-bottom: 1vh;
-  color: black;
-}
-.topbar-center {
-  flex:16;
+.sidebar-profile {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  position: relative;
-  height: 5vh;
+  margin-top: 32px;
+  margin-bottom: 32px;
 }
-form{
+.sidebar-profile-img-link {
+  text-decoration: none;
+}
+.sidebar-profile-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid #23272f;
+  object-fit: cover;
+  margin-bottom: 12px;
+}
+.sidebar-username {
+  font-size: 20px;
+  font-weight: 600;
+  color: #e0e0e0;
+  margin-bottom: 8px;
+}
+.sidebar-nav {
   display: flex;
-}
-.search-form{
-  height: 7vh;
+  flex-direction: column;
   width: 100%;
+  align-items: center;
 }
-.topbar-center-input {
+.sidebar-nav-link {
+  width: 80%;
+  padding: 12px 0;
+  margin: 6px 0;
+  text-align: center;
+  text-decoration: none;
+  color: #e0e0e0;
   font-size: 18px;
-  width: 100%;
-  background-image: linear-gradient(to right, rgb(134, 153, 216), rgb(77, 86, 207));
-  border-radius: 10px;
-  animation-name: inputshow;
-  animation-duration: 0.7s;
-  animation-timing-function:linear;
-  animation-direction: alternate;
-  padding: 3px 2vw;
-  padding-right: 5vw;
-  color: rgb(11, 12, 12);
-  border: 1px solid grey;
+  border-radius: 8px;
+  transition: background 0.2s;
+  background: none;
+}
+.sidebar-nav-link:hover, .sidebar-logout:hover {
+  background: #23272f;
+  color: #00bcd4;
+}
+.sidebar-logout {
+  border: none;
+  background: none;
+  color: #e0e0e0;
+  font-size: 18px;
+  width: 80%;
+  padding: 12px 0;
+  margin: 6px 0;
+  text-align: center;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.sidebar-search-form {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  margin-top: 32px;
+}
+.sidebar-search-input {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 6px 0 0 6px;
+  border: none;
+  background: #23272f;
+  color: #e0e0e0;
+  font-size: 16px;
+}
+.sidebar-search-btn {
+  background: #23272f;
+  border: none;
+  border-radius: 0 6px 6px 0;
+  padding: 8px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 .topbar-center-input:hover{
   box-shadow: 0px 0px 10px 7px rgb(108, 120, 188);
@@ -163,23 +189,6 @@ form{
   position: fixed;
   background-color: rgb(116, 154, 242);
   padding: 30px 15px;
-  animation-name: menushow;
-  animation-duration: 0.4s;
-  animation-timing-function:linear;
-  animation-direction: alternate;
-}
-
-@keyframes menushow{
-  0%{
-    width:0;
-  }
-  100%{
-    width: 40vw;
-  }
-}
-.profile{
-  display: flex;
-  height: 10vh;
 }
 
 

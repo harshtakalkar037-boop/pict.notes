@@ -2,12 +2,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    border: 1px solid darkcyan;
+    border: 1px solid #00bcd4;
     border-radius:20px;
     height: 75vh;
+    background: #23272f;
 }
 .menu-username{
-    color: white;
+    color: #e0e0e0;
     margin-top: 2vh;
 }
 .leftmost-topbar{
@@ -17,7 +18,7 @@
     flex-direction: column;
     align-items: center;
     height: 20vh;
-    background-color: #3E8DE3;
+    background-color: #181a20;
 }
 .leftmost-topbar Link img{
     height: 50px;
@@ -41,7 +42,7 @@
 .leftmost-links{
     font-size: 17px;
     font-weight: 600;
-    color: black;
+    color: #00bcd4;
 }
 .contact-text{
     display: flex;
@@ -56,7 +57,7 @@
 }
 .contact-upper p{
     text-align: center;
-    color: black;
+    color: #e0e0e0;
 }
 
 .logout{

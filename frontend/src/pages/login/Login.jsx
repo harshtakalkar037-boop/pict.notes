@@ -8,37 +8,33 @@ import {Link} from 'react-router-dom'
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
-  /* background: linear-gradient(
-      rgba(255, 255, 255, 0.5),
-      rgba(255, 255, 255, 0.5)
-    ),
-    url("https://img.freepik.com/free-vector/online-document-concept-illustration_114360-5453.jpg?w=900&t=st=1673501437~exp=1673502037~hmac=f7a813ace48ce8a1ce1be58c1d1507746faa24876235b9c94f44584380ed1cd5")
-      center; */
-  background-repeat: no-repeat;
-  background-size: contain;
+  background: #181a20;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
+  font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
 `;
 
 const Wrapper = styled.div`
   width: 25%;
   padding: 20px;
-  background-color: white;
+  background-color: #23272f;
+  color: #e0e0e0;
   ${mobile({ width: "75%" })}
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.4);
 `;
 const TitleNav=styled.h1`
   font-size: 45px;
   font-weight: 200;
   text-align: center;
   margin-bottom: 3vh;
+  color: #00bcd4;
 `
 const Title = styled.h1`
   font-size: 24px;
   font-weight: 300;
+  color: #e0e0e0;
 `;
 
 const Form = styled.form`
@@ -51,19 +47,31 @@ const Input = styled.input`
   min-width: 40%;
   margin: 10px 0;
   padding: 10px;
-  ${mobile({border:"1px solid brown"})}
+  background: #23272f;
+  color: #e0e0e0;
+  border: 1px solid #00bcd4;
+  border-radius: 6px;
+  ${mobile({border:"1px solid #00bcd4"})}
 `;
 
 const Button = styled.button`
   width: 40%;
   border: none;
   padding: 15px 20px;
-  background-color: #3967bc;
-  color: white;
+  background-color: #00bcd4;
+  color: #181a20;
+  font-weight: 600;
   cursor: pointer;
   margin-bottom: 10px;
+  border-radius: 6px;
+  transition: background 0.2s;
+  &:hover {
+    background-color: #0097a7;
+    color: #e0e0e0;
+  }
   &:disabled {
-    background-color: #27457e;
+    background-color: #23272f;
+    color: #888;
     cursor: not-allowed;
   }
 `;
@@ -72,10 +80,11 @@ const LinkTag = styled.a`
   margin: 5px 0px;
   font-size: 12px;
   text-decoration: none;
+  color: #00bcd4;
 `;
 
 const Error = styled.span`
-  color: #3f76e5;
+  color: #ff5252;
 `;
 
 const Login = () => {
@@ -91,7 +100,7 @@ const Login = () => {
   };
   return (
     <Container>
-      <TitleNav>NoteSharing</TitleNav>
+  <TitleNav>Study Sphere</TitleNav>
       <Wrapper>
         <Title>SIGN IN</Title>
         <Form>

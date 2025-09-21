@@ -2,12 +2,14 @@
   box-sizing: border-box;
   padding: 0%;
   margin: 0%;
+  font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
 }
 .profile-container {
   width: 100%;
   padding-left: 10vw;
   padding-right: 10vw;
   padding-top: 4vh;
+  background-color: #181a20;
 }
 .profile-top {
   display: flex;
@@ -39,6 +41,7 @@
   justify-content: center;
   width: 100%;
   line-height: 3px;
+  color: #e0e0e0;
 }
 .fullname {
   font-size: 20px;

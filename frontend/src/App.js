@@ -1,4 +1,5 @@
- import React, { useContext } from "react";
+import React, { useContext } from "react";
+import Topbar from "./component/topbar/Topbar";
 import { Route,Routes, Switch ,Navigate} from "react-router-dom";
 import Login from './pages/login/Login';
 import Regiser from './pages/register/Register';
@@ -15,17 +16,22 @@ function App() {
 
   return (
     <>
-    <Routes>
-     <Route path="/"  exact element={user?<Home />:<Regiser />} />
-     <Route path="/login"  element={user?<Navigate to="/" />:<Login />} />
-     <Route path="/register"  element={user?<Navigate to="/" />:<Regiser />} />
-     <Route path="/messenger" element={!user ? <Navigate to="/" /> : <Messenger />} />
-     <Route path="/profile/:userId"   element={<Profile />} />
-     <Route path="/searchuser"   element={<SearchUserPage />} />
-     <Route path="/profile/update"   element={<UpdateUser />} />
-     <Route path="/note/update/:notesid"   element={<UpdatePost />} />
-     <Route path="/viewcomment/:notesid"   element={<Comment />} />
-     </Routes>
+    <div style={{ display: "flex" }}>
+      <Topbar />
+      <div style={{ marginLeft: "260px", width: "100%" }}>
+        <Routes>
+          <Route path="/"  exact element={user?<Home />:<Regiser />} />
+          <Route path="/login"  element={user?<Navigate to="/" />:<Login />} />
+          <Route path="/register"  element={user?<Navigate to="/" />:<Regiser />} />
+          <Route path="/messenger" element={!user ? <Navigate to="/" /> : <Messenger />} />
+          <Route path="/profile/:userId"   element={<Profile />} />
+          <Route path="/searchuser"   element={<SearchUserPage />} />
+          <Route path="/profile/update"   element={<UpdateUser />} />
+          <Route path="/note/update/:notesid"   element={<UpdatePost />} />
+          <Route path="/viewcomment/:notesid"   element={<Comment />} />
+        </Routes>
+      </div>
+    </div>
     </> 
   );
 }
