@@ -1,12 +1,17 @@
-import "./messenger.css";
 import Navbar from "../../component/Navbar";
 import Conversation from "../../component/conversations/Conversation";
-import Message from "../../component/message/Message"
+import Message from "../../component/message/Message";
 import ChatOnline from "../../component/chatOnline/chatOnline";
-import {useEffect, useRef, useState } from "react";
-import { useSelector  } from "react-redux";
-import {publicRequest} from '../../requestMethods'
+import { useEffect, useRef, useState } from "react";
+import { useSelector } from "react-redux";
+import { publicRequest } from '../../requestMethods';
 import { io } from "socket.io-client";
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Paper from '@mui/material/Paper';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 export default function Messenger() {
   const [conversations, setConversations] = useState([]);
@@ -105,58 +110,72 @@ export default function Messenger() {
   return (
     <>
       <Navbar />
-      <div className="messenger">
-        <div className="chatMenu">
-          <div className="chatMenuWrapper">
-            <input placeholder="Search for users" className="chatMenuInput"/>
-            {conversations.map((c) => (
-              <div onClick={() => setCurrentChat(c)}>
-                <Conversation conversation={c} currentUser={user} />
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="chatBox">
-          <div className="chatBoxWrapper">
-            {currentChat ? (
-              <>
-                <div className="chatBoxTop">
-                  {messages.map((m) => (
-                    <div ref={scrollRef}>
-                      <Message message={m} own={m.sender === user._id} />
-                    </div>
-                  ))}
-                </div>
-                <div className="chatBoxBottom">
-                  <input
-                    className="chatMessageInput"
-                    placeholder="write something..."
-                    onChange={(e) => setNewMessage(e.target.value)}
-                    value={newMessage}
-                  ></input>
-                  <button className="chatSubmitButton" onClick={handleSubmit}>
-                    Send
-                  </button>
-                </div>
-              </>
-            ) : (
-              <span className="noConversationText">
-                Open a conversation to start a chat.
-              </span>
-            )}
-          </div>
-        </div>
-        <div className="chatOnline">
-          <p style={{fontSize:"25px",margin:"2vh",borderBottom:"1px solid brown"}}>Online Users</p>
-          <div className="chatOnlineWrapper">
-            <ChatOnline
-              onlineUsers={onlineUsers}
-              currentId={user._id}
-              setCurrentChat={setCurrentChat}
-            />
-          </div>
-        </div>
-      </div>
+      <Container maxWidth="xl" sx={{ pt: 4, pb: 2 }}>
+        <Paper elevation={3} sx={{ p: 3, borderRadius: 3, background: '#f5faff', boxShadow: '0 2px 12px rgba(33,150,243,0.08)' }}>
+          <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 3 }}>
+            <Box sx={{ flex: 2, minWidth: 260 }}>
+              <Typography variant="h6" sx={{ color: '#1976d2', mb: 2 }}>Conversations</Typography>
+              <TextField
+                placeholder="Search for users"
+                variant="outlined"
+                size="small"
+                fullWidth
+                sx={{ mb: 2 }}
+              />
+              <Box sx={{ maxHeight: 400, overflowY: 'auto' }}>
+                {conversations.map((c) => (
+                  <Box key={c._id} onClick={() => setCurrentChat(c)} sx={{ mb: 1, cursor: 'pointer' }}>
+                    <Conversation conversation={c} currentUser={user} />
+                  </Box>
+                ))}
+              </Box>
+            </Box>
+            <Box sx={{ flex: 4, minWidth: 320 }}>
+              <Typography variant="h6" sx={{ color: '#1976d2', mb: 2 }}>Chat</Typography>
+              <Paper elevation={1} sx={{ p: 2, minHeight: 320, background: '#fff' }}>
+                {currentChat ? (
+                  <>
+                    <Box sx={{ maxHeight: 220, overflowY: 'auto', mb: 2 }}>
+                      {messages.map((m, idx) => (
+                        <Box ref={scrollRef} key={idx}>
+                          <Message message={m} own={m.sender === user._id} />
+                        </Box>
+                      ))}
+                    </Box>
+                    <Box sx={{ display: 'flex', gap: 2 }}>
+                      <TextField
+                        placeholder="Write something..."
+                        variant="outlined"
+                        size="small"
+                        value={newMessage}
+                        onChange={e => setNewMessage(e.target.value)}
+                        fullWidth
+                      />
+                      <Button onClick={handleSubmit} variant="contained" sx={{ background: '#1976d2', textTransform: 'none', fontWeight: 600 }}>
+                        Send
+                      </Button>
+                    </Box>
+                  </>
+                ) : (
+                  <Typography variant="body2" sx={{ color: '#888', textAlign: 'center', mt: 4 }}>
+                    Open a conversation to start a chat.
+                  </Typography>
+                )}
+              </Paper>
+            </Box>
+            <Box sx={{ flex: 2, minWidth: 260 }}>
+              <Typography variant="h6" sx={{ color: '#1976d2', mb: 2 }}>Online Users</Typography>
+              <Paper elevation={1} sx={{ p: 2, background: '#fff' }}>
+                <ChatOnline
+                  onlineUsers={onlineUsers}
+                  currentId={user._id}
+                  setCurrentChat={setCurrentChat}
+                />
+              </Paper>
+            </Box>
+          </Box>
+        </Paper>
+      </Container>
     </>
   );
 }

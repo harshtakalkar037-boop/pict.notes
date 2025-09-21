@@ -1,12 +1,17 @@
-import React, { useContext, useRef } from "react";
-import "./UpdatePost.css";
-import { useState, useEffect } from "react";
+import React from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { publicRequest } from "../../requestMethods";
-import {useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import Navbar from '../Navbar'
+import Navbar from '../Navbar';
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import Paper from '@mui/material/Paper';
 function UpdatePost() {
   const { notesid } = useParams();
   const { currentUser: user } = useSelector((state) => state.user);
@@ -43,61 +48,27 @@ function UpdatePost() {
       navigate("/");
     } catch (err) {}
   };
+
   return (
     <>
-    <Navbar />
-      <div className="Update-post-container-complete">
-        <div className="Update-post-container">
-          <p className="Update-post-container-name">Update your note</p>
-          <form
-            onSubmit={UpdateNoteHandler}
-            className="Update-post-container-form"
-          >
-            <div className="Update-post-input-box">
-              <p className="Update-post-input-heading">Note name</p>
-              <input
-                type="text"
-                placeholder="notename"
-                onChange={(e) => setnotename(e.target.value)}
-                className="Update-post-input-block"
-              ></input>
-            </div>
-
-            <div className="Update-post-input-box">
-              <p className="Update-post-input-heading">Descritpion</p>
-              <input
-                type="text"
-                placeholder="Descritpion"
-                onChange={(e) => setdesc(e.target.value)}
-                className="Update-post-input-block"
-              ></input>
-            </div>
-
-            <div className="Update-post-input-box">
-              <p className="Update-post-input-heading">Note file Url</p>
-              <input
-                type="text"
-                className="Update-post-input-block"
-                placeholder="note file url(file must be in pdf format)"
-                onChange={(e) => setnoteupdatedfile(e.target.value)}
-              ></input>
-            </div>
-
-            <div className="Update-post-input-box-file">
-              <p className="Update-post-input-heading-file">Thumbnail file</p>
-              <input
-                type="file"
-                className="Update-post-input-block-file"
-                accept=".png,.jpeg,.jpg"
-                onChange={(e) => setnoteupdatedphoto(e.target.files[0])}
-              ></input>
-            </div>
-            <button type="submit" className="Update-post-container-form-submit">
-              Update-Note
-            </button>
-          </form>
-        </div>
-      </div>
+      <Navbar />
+      <Container maxWidth="sm" sx={{ pt: 4, pb: 2 }}>
+        <Paper elevation={3} sx={{ p: 4, borderRadius: 3, background: '#f5faff', boxShadow: '0 2px 12px rgba(33,150,243,0.08)' }}>
+          <Typography variant="h5" sx={{ fontWeight: 700, color: '#1976d2', mb: 3 }}>Update Your Note</Typography>
+          <Box component="form" onSubmit={UpdateNoteHandler} sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+            <TextField label="Note Name" variant="outlined" onChange={e => setnotename(e.target.value)} fullWidth />
+            <TextField label="Description" variant="outlined" onChange={e => setdesc(e.target.value)} fullWidth />
+            <TextField label="Note File URL (PDF)" variant="outlined" onChange={e => setnoteupdatedfile(e.target.value)} fullWidth />
+            <Button variant="contained" component="label" sx={{ background: '#1976d2', textTransform: 'none', fontWeight: 600 }}>
+              Upload Thumbnail
+              <input type="file" hidden accept=".png,.jpeg,.jpg" onChange={e => setnoteupdatedphoto(e.target.files[0])} />
+            </Button>
+            <Button type="submit" variant="contained" sx={{ background: '#1976d2', textTransform: 'none', fontWeight: 600 }}>
+              Update Note
+            </Button>
+          </Box>
+        </Paper>
+      </Container>
     </>
   );
 }

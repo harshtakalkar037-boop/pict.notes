@@ -1,5 +1,22 @@
-import { Badge } from "@material-ui/core";
-import { Search, Chat, Menu,AccountCircle,ExitToApp } from "@material-ui/icons";
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
+import InputBase from '@mui/material/InputBase';
+import AccountCircle from '@mui/icons-material/AccountCircle';
+import ExitToApp from '@mui/icons-material/Logout';
+import ChatIcon from '@mui/icons-material/Chat';
+import SearchIcon from '@mui/icons-material/Search';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import { alpha, styled } from '@mui/material/styles';
+import React, { useEffect, useState, useRef } from "react";
+import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { logout, search } from "../redux/userRedux";
+import TopNavbar from './TopNavbar/TopNavbar';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import styled from "styled-components";
@@ -9,200 +26,132 @@ import { Link } from "react-router-dom";
 import {logout,search} from "../redux/userRedux";
 import { useRef } from "react";
 import TopNavbar from './TopNavbar/TopNavbar'
-const Container = styled.div`
-  height: 60px;
-  ${mobile({ height: "50px" })}
-`;
 
-const Wrapper = styled.div`
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  ${mobile({ padding: "10px 10px" })}
-`;
+const SearchBar = styled('form')(({ theme }) => ({
+  position: 'relative',
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  '&:hover': {
+    backgroundColor: alpha(theme.palette.common.white, 0.25),
+  },
+  marginLeft: 0,
+  width: '100%',
+  [theme.breakpoints.up('sm')]: {
+    marginLeft: theme.spacing(1),
+    width: 'auto',
+  },
+  display: 'flex',
+  alignItems: 'center',
+  border: '1px solid #e0e0e0',
+  padding: '2px 8px',
+}));
 
-const Left = styled.div`
-  flex: 1;
-  display: flex;
-  align-items: center;
-  ${mobile({ flex:5 })}
-`;
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: 'inherit',
+  marginLeft: theme.spacing(1),
+  flex: 1,
+  fontSize: 16,
+  [theme.breakpoints.down('sm')]: {
+    fontSize: 14,
+  },
+}));
 
-const Language = styled.span`
-  font-size: 14px;
-  cursor: pointer;
-  ${mobile({ display: "none" })}
-`;
-
-const SearchContainer = styled.form`
-  border: 1px solid lightgray;
-  display: flex;
-  align-items: center;
-  margin-left: 25px;
-  ${mobile({ marginLeft:"0px" })}
-  padding: 5px;
-`;
-
-const Input = styled.input`
-  border: none;
-  outline: none;
-  ${mobile({ width: "120px" })}
-`;
-
-const Center = styled.div`
-  flex: 1;
-  text-align: center;
+const TopNavWrapper = styled('div')(({ theme }) => ({
+  display: 'none',
+  [theme.breakpoints.down('sm')]: {
+    display: 'block',
+  },
+}));
  
-`;
 
-const Logo = styled.h1`
-  font-weight: bold;
-  ${mobile({ fontSize: "24px",display:"none" })}
-`;
-const Right = styled.div`
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  ${mobile({ flex: 10, justifyContent: "space-around" })}
-`;
-
-const MenuItem = styled.div`
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  margin-left: 25px;
-  ${mobile({marginLeft: "15px", marginRight:"5px",flexDirection:"column" })}
-`;
-const Item=styled.p`
-    font-size: 20px;
-    margin-left: "2px";
-    color: #115195;
-    ${mobile({ fontSize: "13px"})}
-`
-const CartItem = styled.div`
-  font-size: 14px;
-  cursor: pointer;
-  margin-left: 25px;
-  ${mobile({ fontSize: "12px", marginLeft: "15px" ,marginRight:"5px" })}
-`;
-const Button = styled.button`
-  border: none;
-  background: none;
-  outline: none;
-  cursor: pointer;
-  margin-left: 2px;
-  font-size: 20px;
-  color: #185393;
-  ${mobile({fontSize:"13px"})}
-`;
-const SearchButton = styled.button`
-   border: none;
-   outline: none;
-   background-color: white;
-`;
-const TopNavWrapper=styled.div`
-    display: none;
-    ${mobile({ display:"block" })}
-`
- 
 
 const Navbar = () => {
-//   const quantity = useSelector(state=>state.cart.quantity)
-  const currentUser= useSelector(state=>state.user.currentUser)
-  const [searchedValue,setsearchedValue]=useState(null)
-  const item=useRef();
+  const currentUser = useSelector(state => state.user.currentUser);
+  const [searchedValue, setSearchedValue] = useState("");
   let navigate = useNavigate();
   const dispatch = useDispatch();
-  const logoutHandler=()=>{
+  const isMobile = useMediaQuery('(max-width:600px)');
+
+  const logoutHandler = () => {
     dispatch(logout());
     navigate("/login");
-  }
-  const searchHandler=(e)=>{
+  };
+
+  const searchHandler = (e) => {
     e.preventDefault();
     dispatch(search(searchedValue));
-  }
-  useEffect(()=>{
+  };
+
+  useEffect(() => {
     dispatch(search(null));
-  },[])
-  const HandleNav =()=>{
-      console.log(item.current.display)
-         if(item.current.display==="flex"){
-            item.current.display="none";
-         }
-         else{
-            item.current.display="flex";
-         }
-  }
+  }, [dispatch]);
+
   return (
     <>
-    <TopNavWrapper>
-     <TopNavbar />
-     </TopNavWrapper>
-    <Container>
-      <Wrapper>
-        <Left>
-          <Language>EN</Language>
-          <SearchContainer onSubmit={searchHandler}>
-            <Input placeholder="Search" onChange={(e)=>setsearchedValue(e.target.value)}/>
-            <SearchButton type="submit">
-            <Search style={{ color: "gray", fontSize: 16 }} />
-            </SearchButton >
-          </SearchContainer>
-        </Left>
-        <Center>
-        <Link to="/" style={{textDecoration:"none",color:"black"}}>
-          <Logo>NoteSharing</Logo>
-          </Link>
-        </Center>
-        <Right>
-          
-            { 
-             currentUser?
-             <>
-             
-             <Link to={"/profile/"+currentUser._id} style={{textDecoration:"none"}}>
-             <MenuItem>
-             <AccountCircle />
-             <Item>
-             {currentUser.username}
-             </Item>
-             </MenuItem>
-             </Link>
-           
-             <MenuItem>
-             <ExitToApp onClick={logoutHandler}/>
-             <Button onClick={logoutHandler}>Logout</Button>
-             </MenuItem>
-             </>
-             :
-             <>
-              <MenuItem>
-             <Link to="/login" style={{textDecoration:"none",color:"black"}}>
-              SignIn
-             </Link>
-             </MenuItem>
-             <MenuItem>
-             <Link to="/register" style={{textDecoration:"none",color:"black"}}>
-              Register
-             </Link>
-             </MenuItem>
-             </>
-          }
-         
-          <Link to="/searchuser" style={{textDecoration:"none"}}>
-               <MenuItem>
-               <Chat style={{color:"#1b6dc4"}} />
-               <Item>
-               Chat
-               </Item>
-               </MenuItem>
-          </Link>
-         
-        </Right>
-      </Wrapper>
-    </Container>
+      <TopNavWrapper>
+        <TopNavbar />
+      </TopNavWrapper>
+      <AppBar position="static" color="default" elevation={2} sx={{ background: 'linear-gradient(90deg, #e3f2fd 0%, #fff 100%)' }}>
+        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', px: isMobile ? 1 : 3 }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', flex: 1 }}>
+            <Typography variant="body2" sx={{ mr: 2, color: '#1976d2', fontWeight: 500, display: { xs: 'none', sm: 'block' } }}>
+              EN
+            </Typography>
+            <SearchBar onSubmit={searchHandler}>
+              <StyledInputBase
+                placeholder="Search..."
+                value={searchedValue}
+                onChange={e => setSearchedValue(e.target.value)}
+                inputProps={{ 'aria-label': 'search' }}
+              />
+              <IconButton type="submit" size="small" sx={{ p: '4px', color: '#1976d2' }}>
+                <SearchIcon />
+              </IconButton>
+            </SearchBar>
+          </Box>
+          <Box sx={{ flex: 1, textAlign: 'center' }}>
+            <Link to="/" style={{ textDecoration: "none" }}>
+              <Typography variant={isMobile ? "h6" : "h5"} sx={{ fontWeight: 700, color: '#1976d2', letterSpacing: 1, fontFamily: 'Montserrat, sans-serif', transition: 'color 0.3s', '&:hover': { color: '#1565c0' } }}>
+                Study Sphere
+              </Typography>
+            </Link>
+          </Box>
+          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', flex: 1 }}>
+            {currentUser ? (
+              <>
+                <Link to={`/profile/${currentUser._id}`} style={{ textDecoration: "none" }}>
+                  <IconButton size="large" sx={{ color: '#1976d2', mx: 1 }}>
+                    <AccountCircle />
+                  </IconButton>
+                  <Typography variant="body1" sx={{ color: '#1976d2', fontWeight: 500, display: { xs: 'none', sm: 'inline' } }}>
+                    {currentUser.username}
+                  </Typography>
+                </Link>
+                <Button onClick={logoutHandler} startIcon={<ExitToApp />} sx={{ color: '#d32f2f', fontWeight: 500, ml: 2, textTransform: 'none' }}>
+                  Logout
+                </Button>
+              </>
+            ) : (
+              <>
+                <Link to="/login" style={{ textDecoration: "none" }}>
+                  <Button sx={{ color: '#1976d2', fontWeight: 500, textTransform: 'none', mx: 1 }}>Sign In</Button>
+                </Link>
+                <Link to="/register" style={{ textDecoration: "none" }}>
+                  <Button sx={{ color: '#1976d2', fontWeight: 500, textTransform: 'none', mx: 1 }}>Register</Button>
+                </Link>
+              </>
+            )}
+            <Link to="/searchuser" style={{ textDecoration: "none" }}>
+              <IconButton size="large" sx={{ color: '#1976d2', mx: 1 }}>
+                <ChatIcon />
+              </IconButton>
+              <Typography variant="body1" sx={{ color: '#1976d2', fontWeight: 500, display: { xs: 'none', sm: 'inline' } }}>
+                Chat
+              </Typography>
+            </Link>
+          </Box>
+        </Toolbar>
+      </AppBar>
     </>
   );
 };

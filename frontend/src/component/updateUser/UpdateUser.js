@@ -1,11 +1,17 @@
-import React, { useContext, useRef } from "react";
-import "./UpdateUser.css";
-import { useState, useEffect } from "react";
+import React from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { publicRequest } from "../../requestMethods";
 import { useSelector } from "react-redux";
 import Navbar from '../Navbar';
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import Avatar from '@mui/material/Avatar';
+import Paper from '@mui/material/Paper';
 const UpdateUser = () => {
   const pf = "https://pict-notes.onrender.com/";
   const { currentUser: user } = useSelector((state) => state.user);
@@ -48,120 +54,34 @@ const UpdateUser = () => {
     }
   };
 
+
   return (
     <>
       <Navbar />
-      <div className="Update-container">
-        <div className="Update-profile-container">
-          <div className="Update-profile-container-left">
-            <div className="Update-profile-container-left-top">
-              <img
-                src={
-                  user.profilePicture
-                    ? user.profilePicture
-                    : pf + "DefaultPic.png"
-                }
-                className="Update-profile-container-left-top-img"
-              ></img>
-
-              <div className="Update-profile-container-left-top-user-desc">
-                <p className="Update-profile-container-left-top-name">
-                  <span>{user.firstname}</span> <span>{user.lastname} </span>
-                </p>
-                <p className="Update-profile-container-left-top-username">
-                  {user.username}
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="Update-profile-container-right">
-            <p className="Update-profile-container-right-heading">
-              Your Personal Profile Info
-            </p>
-            <form
-              onSubmit={UpdateFormHandler}
-              className="Update-profile-container-right-form"
-            >
-              <div className="input-box">
-                <p className="input-heading">first name</p>
-                <input
-                  type="text"
-                  placeholder="firstname"
-                  onChange={(e) => setfirstname(e.target.value)}
-                  className="input-block"
-                ></input>
-              </div>
-
-              <div className="input-box">
-                <p className="input-heading">last name</p>
-                <input
-                  type="text"
-                  placeholder="lastname"
-                  onChange={(e) => setlastname(e.target.value)}
-                  className="input-block"
-                ></input>
-              </div>
-
-              
-
-             
-
-              <div className="input-box">
-                <p className="input-heading">Institution</p>
-                <input
-                  type="text"
-                  placeholder="institution"
-                  onChange={(e) => setinstitution(e.target.value)}
-                  className="input-block"
-                ></input>
-              </div>
-
-              <div className="input-box">
-                <p className="input-heading">Interested field</p>
-                <input
-                  type="text"
-                  placeholder="eg. physics,coding,biology..."
-                  onChange={(e) => setinterested(e.target.value)}
-                  className="input-block"
-                ></input>
-              </div>
-
-              
-
-              <div className="input-box">
-                <p className="input-heading">Update your password</p>
-                <input
-                  type="password"
-                  placeholder="not required"
-                  onChange={(e) => setpassword(e.target.value)}
-                  minLength="6"
-                  className="input-block"
-                ></input>
-              </div>
-
-              <div className="input-box">
-                <p className="input-heading">Profile picture</p>
-                <input
-                  type="file"
-                  className="input-block"
-                  id="input-bloack-file"
-                  accept=".png,.jpeg,.jpg"
-                  onChange={(e) => setphoto(e.target.files[0])}
-                  style={{ border: "none", borderRadius: "0%" }}
-                ></input>
-              </div>
-
-              <button
-                type="submit"
-                className="Update-profile-container-right-form-submit"
-              >
-                Update-profile
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
+      <Container maxWidth="sm" sx={{ pt: 4, pb: 2 }}>
+        <Paper elevation={3} sx={{ p: 4, borderRadius: 3, background: '#f5faff', boxShadow: '0 2px 12px rgba(33,150,243,0.08)' }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mb: 3 }}>
+            <Avatar src={user.profilePicture ? user.profilePicture : pf + "DefaultPic.png"} sx={{ width: 100, height: 100, mb: 2 }} />
+            <Typography variant="h5" sx={{ fontWeight: 700, color: '#1976d2', mb: 1 }}>{user.firstname} {user.lastname}</Typography>
+            <Typography variant="body2" sx={{ color: '#1565c0', mb: 1 }}>{user.username}</Typography>
+          </Box>
+          <Typography variant="h6" sx={{ color: '#1565c0', mb: 2 }}>Your Personal Profile Info</Typography>
+          <Box component="form" onSubmit={UpdateFormHandler} sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+            <TextField label="First Name" variant="outlined" onChange={e => setfirstname(e.target.value)} fullWidth />
+            <TextField label="Last Name" variant="outlined" onChange={e => setlastname(e.target.value)} fullWidth />
+            <TextField label="Institution" variant="outlined" onChange={e => setinstitution(e.target.value)} fullWidth />
+            <TextField label="Interested Field" variant="outlined" onChange={e => setinterested(e.target.value)} fullWidth />
+            <TextField label="Update Password" variant="outlined" type="password" onChange={e => setpassword(e.target.value)} fullWidth />
+            <Button variant="contained" component="label" sx={{ background: '#1976d2', textTransform: 'none', fontWeight: 600 }}>
+              Upload Profile Picture
+              <input type="file" hidden accept=".png,.jpeg,.jpg" onChange={e => setphoto(e.target.files[0])} />
+            </Button>
+            <Button type="submit" variant="contained" sx={{ background: '#1976d2', textTransform: 'none', fontWeight: 600 }}>
+              Update Profile
+            </Button>
+          </Box>
+        </Paper>
+      </Container>
     </>
   );
 };

@@ -1,27 +1,21 @@
-import React from "react";
-import styled from "styled-components";
-import { useSelector, useDispatch } from "react-redux";
-import { mobile } from "../../responsive"
- import BuildConversation from '../../component/BuildConversation/BuildConversation'
- import Navbar from "../../component/Navbar";
 
- const Container = styled.div`
-  width: 100%;
-  margin-top: 3vh;
-  padding: 20px;
-  background: #181a20;
-  color: #e0e0e0;
-  font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
-`;
- const SearchUserPage = () => {
-   return (
+import React from "react";
+import BuildConversation from '../../component/BuildConversation/BuildConversation';
+import Navbar from "../../component/Navbar";
+import Container from '@mui/material/Container';
+import Paper from '@mui/material/Paper';
+
+const SearchUserPage = () => {
+  return (
     <>
-    <Navbar />
-      <Container>
-        <BuildConversation />
+      <Navbar />
+      <Container maxWidth="md" sx={{ pt: 4 }}>
+        <Paper elevation={3} sx={{ p: 4, borderRadius: 3, background: '#f5faff', boxShadow: '0 2px 12px rgba(33,150,243,0.08)' }}>
+          <BuildConversation />
+        </Paper>
       </Container>
-      </>
-   )
- }
- 
- export default SearchUserPage
+    </>
+  );
+}
+
+export default SearchUserPage;
