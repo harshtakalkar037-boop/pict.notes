@@ -10,8 +10,6 @@ import SearchIcon from '@mui/icons-material/Search';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import { alpha, styled } from '@mui/material/styles';
-import React, { useEffect, useState, useRef } from "react";
-import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
@@ -19,13 +17,6 @@ import { Link } from "react-router-dom";
 import { logout, search } from "../redux/userRedux";
 import TopNavbar from './TopNavbar/TopNavbar';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import styled from "styled-components";
-import { mobile } from "../responsive";
-import { useSelector,useDispatch} from "react-redux";
-import { Link } from "react-router-dom";
-import {logout,search} from "../redux/userRedux";
-import { useRef } from "react";
-import TopNavbar from './TopNavbar/TopNavbar'
 
 const SearchBar = styled('form')(({ theme }) => ({
   position: 'relative',
