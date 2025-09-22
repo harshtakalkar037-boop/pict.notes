@@ -11,11 +11,10 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import { alpha, styled } from '@mui/material/styles';
 import React, { useEffect, useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
 import { logout, search } from "../redux/userRedux";
-import TopNavbar from './TopNavbar/TopNavbar';
+import TopNavbar from './TopNavbar/TopNavbar'; // Ensure this import is correct and TopNavbar is a valid component
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 const SearchBar = styled('form')(({ theme }) => ({
@@ -55,11 +54,14 @@ const TopNavWrapper = styled('div')(({ theme }) => ({
 }));
 
 const Navbar = () => {
-  const currentUser = useSelector(state => state.user.currentUser);
+  const currentUser  = useSelector(state => state.user.currentUser );
   const [searchedValue, setSearchedValue] = useState("");
   let navigate = useNavigate();
   const dispatch = useDispatch();
   const isMobile = useMediaQuery('(max-width:600px)');
+
+  // Debug: Log currentUser  to check its structure (remove after fixing)
+  console.log('Current User in Navbar:', currentUser );
 
   const logoutHandler = () => {
     dispatch(logout());
@@ -68,35 +70,38 @@ const Navbar = () => {
 
   const searchHandler = (e) => {
     e.preventDefault();
-    dispatch(search(searchedValue));
+    if (searchedValue.trim()) { // Prevent empty searches
+      dispatch(search(searchedValue));
+    }
   };
 
   useEffect(() => {
-    dispatch(search(null));
+    // Safer: dispatch empty string instead of null
+    dispatch(search(""));
   }, [dispatch]);
+
+  // Safe rendering of username (ensure it's always a string)
+  const safeUsername = currentUser ?.username ? String(currentUser .username) : '';
 
   return (
     <>
       <TopNavWrapper>
-        <TopNavbar />
-      </TopNavWrapper>
-      <AppBar
-        position="static"
-        color="default"
+  {/* <TopNavbar /> - Commented out for debugging */}
+</TopNavWrapper>
+     
+      <AppBar 
+        position="static" 
+        color="default" 
         elevation={2}
         sx={{ background: 'linear-gradient(90deg, #e3f2fd 0%, #fff 100%)' }}
       >
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', px: isMobile ? 1 : 3 }}>
-          {/* Left Section */}
+          
+          {/* Left section: Language + Search */}
           <Box sx={{ display: 'flex', alignItems: 'center', flex: 1 }}>
             <Typography
               variant="body2"
-              sx={{
-                mr: 2,
-                color: '#1976d2',
-                fontWeight: 500,
-                display: { xs: 'none', sm: 'block' }
-              }}
+              sx={{ mr: 2, color: '#1976d2', fontWeight: 500, display: { xs: 'none', sm: 'block' } }}
             >
               EN
             </Typography>
@@ -113,7 +118,7 @@ const Navbar = () => {
             </SearchBar>
           </Box>
 
-          {/* Center Section (Logo / Title) */}
+          {/* Center section: Logo */}
           <Box sx={{ flex: 1, textAlign: 'center' }}>
             <Link to="/" style={{ textDecoration: "none" }}>
               <Typography
@@ -132,30 +137,24 @@ const Navbar = () => {
             </Link>
           </Box>
 
-          {/* Right Section */}
+          {/* Right section: User + Chat */}
           <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', flex: 1 }}>
-            {currentUser ? (
+            {currentUser  ? (
               <>
-                {/* Profile Link */}
-                <Link to={`/profile/${currentUser._id}`} style={{ textDecoration: "none" }}>
-                  <Box sx={{ display: "flex", alignItems: "center" }}>
-                    <IconButton size="large" sx={{ color: '#1976d2', mx: 1 }}>
-                      <AccountCircle />
-                    </IconButton>
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        color: '#1976d2',
-                        fontWeight: 500,
-                        display: { xs: 'none', sm: 'inline' }
-                      }}
-                    >
-                      {currentUser.username}
-                    </Typography>
-                  </Box>
+                <Link 
+                  to={`/profile/${currentUser ._id || ''}`} 
+                  style={{ textDecoration: "none", display: "flex", alignItems: "center" }}
+                >
+                  <IconButton size="large" sx={{ color: '#1976d2', mx: 1 }}>
+                    <AccountCircle />
+                  </IconButton>
+                  <Typography
+                    variant="body1"
+                    sx={{ color: '#1976d2', fontWeight: 500, display: { xs: 'none', sm: 'inline' } }}
+                  >
+                    {safeUsername} {/* Safe string rendering */}
+                  </Typography>
                 </Link>
-
-                {/* Logout Button */}
                 <Button
                   onClick={logoutHandler}
                   startIcon={<ExitToApp />}
@@ -179,7 +178,7 @@ const Navbar = () => {
               </>
             )}
 
-            {/* Chat Link */}
+            {/* Chat link - ensured it's a valid React element */}
             <Link to="/searchuser" style={{ textDecoration: "none" }}>
               <Box sx={{ display: "flex", alignItems: "center" }}>
                 <IconButton size="large" sx={{ color: '#1976d2', mx: 1 }}>
@@ -187,11 +186,7 @@ const Navbar = () => {
                 </IconButton>
                 <Typography
                   variant="body1"
-                  sx={{
-                    color: '#1976d2',
-                    fontWeight: 500,
-                    display: { xs: 'none', sm: 'inline' }
-                  }}
+                  sx={{ color: '#1976d2', fontWeight: 500, display: { xs: 'none', sm: 'inline' } }}
                 >
                   Chat
                 </Typography>
