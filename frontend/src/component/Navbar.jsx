@@ -53,8 +53,6 @@ const TopNavWrapper = styled('div')(({ theme }) => ({
     display: 'block',
   },
 }));
- 
-
 
 const Navbar = () => {
   const currentUser = useSelector(state => state.user.currentUser);
@@ -82,10 +80,24 @@ const Navbar = () => {
       <TopNavWrapper>
         <TopNavbar />
       </TopNavWrapper>
-      <AppBar position="static" color="default" elevation={2} sx={{ background: 'linear-gradient(90deg, #e3f2fd 0%, #fff 100%)' }}>
+      <AppBar
+        position="static"
+        color="default"
+        elevation={2}
+        sx={{ background: 'linear-gradient(90deg, #e3f2fd 0%, #fff 100%)' }}
+      >
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', px: isMobile ? 1 : 3 }}>
+          {/* Left Section */}
           <Box sx={{ display: 'flex', alignItems: 'center', flex: 1 }}>
-            <Typography variant="body2" sx={{ mr: 2, color: '#1976d2', fontWeight: 500, display: { xs: 'none', sm: 'block' } }}>
+            <Typography
+              variant="body2"
+              sx={{
+                mr: 2,
+                color: '#1976d2',
+                fontWeight: 500,
+                display: { xs: 'none', sm: 'block' }
+              }}
+            >
               EN
             </Typography>
             <SearchBar onSubmit={searchHandler}>
@@ -100,45 +112,90 @@ const Navbar = () => {
               </IconButton>
             </SearchBar>
           </Box>
+
+          {/* Center Section (Logo / Title) */}
           <Box sx={{ flex: 1, textAlign: 'center' }}>
             <Link to="/" style={{ textDecoration: "none" }}>
-              <Typography variant={isMobile ? "h6" : "h5"} sx={{ fontWeight: 700, color: '#1976d2', letterSpacing: 1, fontFamily: 'Montserrat, sans-serif', transition: 'color 0.3s', '&:hover': { color: '#1565c0' } }}>
+              <Typography
+                variant={isMobile ? "h6" : "h5"}
+                sx={{
+                  fontWeight: 700,
+                  color: '#1976d2',
+                  letterSpacing: 1,
+                  fontFamily: 'Montserrat, sans-serif',
+                  transition: 'color 0.3s',
+                  '&:hover': { color: '#1565c0' }
+                }}
+              >
                 Study Sphere
               </Typography>
             </Link>
           </Box>
+
+          {/* Right Section */}
           <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', flex: 1 }}>
             {currentUser ? (
               <>
+                {/* Profile Link */}
                 <Link to={`/profile/${currentUser._id}`} style={{ textDecoration: "none" }}>
-                  <IconButton size="large" sx={{ color: '#1976d2', mx: 1 }}>
-                    <AccountCircle />
-                  </IconButton>
-                  <Typography variant="body1" sx={{ color: '#1976d2', fontWeight: 500, display: { xs: 'none', sm: 'inline' } }}>
-                    {currentUser.username}
-                  </Typography>
+                  <Box sx={{ display: "flex", alignItems: "center" }}>
+                    <IconButton size="large" sx={{ color: '#1976d2', mx: 1 }}>
+                      <AccountCircle />
+                    </IconButton>
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        color: '#1976d2',
+                        fontWeight: 500,
+                        display: { xs: 'none', sm: 'inline' }
+                      }}
+                    >
+                      {currentUser.username}
+                    </Typography>
+                  </Box>
                 </Link>
-                <Button onClick={logoutHandler} startIcon={<ExitToApp />} sx={{ color: '#d32f2f', fontWeight: 500, ml: 2, textTransform: 'none' }}>
+
+                {/* Logout Button */}
+                <Button
+                  onClick={logoutHandler}
+                  startIcon={<ExitToApp />}
+                  sx={{ color: '#d32f2f', fontWeight: 500, ml: 2, textTransform: 'none' }}
+                >
                   Logout
                 </Button>
               </>
             ) : (
               <>
                 <Link to="/login" style={{ textDecoration: "none" }}>
-                  <Button sx={{ color: '#1976d2', fontWeight: 500, textTransform: 'none', mx: 1 }}>Sign In</Button>
+                  <Button sx={{ color: '#1976d2', fontWeight: 500, textTransform: 'none', mx: 1 }}>
+                    Sign In
+                  </Button>
                 </Link>
                 <Link to="/register" style={{ textDecoration: "none" }}>
-                  <Button sx={{ color: '#1976d2', fontWeight: 500, textTransform: 'none', mx: 1 }}>Register</Button>
+                  <Button sx={{ color: '#1976d2', fontWeight: 500, textTransform: 'none', mx: 1 }}>
+                    Register
+                  </Button>
                 </Link>
               </>
             )}
+
+            {/* Chat Link */}
             <Link to="/searchuser" style={{ textDecoration: "none" }}>
-              <IconButton size="large" sx={{ color: '#1976d2', mx: 1 }}>
-                <ChatIcon />
-              </IconButton>
-              <Typography variant="body1" sx={{ color: '#1976d2', fontWeight: 500, display: { xs: 'none', sm: 'inline' } }}>
-                Chat
-              </Typography>
+              <Box sx={{ display: "flex", alignItems: "center" }}>
+                <IconButton size="large" sx={{ color: '#1976d2', mx: 1 }}>
+                  <ChatIcon />
+                </IconButton>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: '#1976d2',
+                    fontWeight: 500,
+                    display: { xs: 'none', sm: 'inline' }
+                  }}
+                >
+                  Chat
+                </Typography>
+              </Box>
             </Link>
           </Box>
         </Toolbar>
