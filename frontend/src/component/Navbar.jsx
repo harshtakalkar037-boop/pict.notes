@@ -1,3 +1,8 @@
+import React, { useEffect, useState } from "react";
+import { useNavigate, Link } from 'react-router-dom';
+import { useSelector, useDispatch } from "react-redux";
+import { logout, search } from "../redux/userRedux";
+
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -10,11 +15,6 @@ import SearchIcon from '@mui/icons-material/Search';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import { alpha, styled } from '@mui/material/styles';
-import React, { useEffect, useState } from "react";
-import { useNavigate, Link } from 'react-router-dom';
-import { useSelector, useDispatch } from "react-redux";
-import { logout, search } from "../redux/userRedux";
-import TopNavbar from './TopNavbar/TopNavbar'; // Ensure this import is correct and TopNavbar is a valid component
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 const SearchBar = styled('form')(({ theme }) => ({
@@ -56,7 +56,7 @@ const TopNavWrapper = styled('div')(({ theme }) => ({
 const Navbar = () => {
   const currentUser  = useSelector(state => state.user.currentUser );
   const [searchedValue, setSearchedValue] = useState("");
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const isMobile = useMediaQuery('(max-width:600px)');
 
@@ -70,33 +70,32 @@ const Navbar = () => {
 
   const searchHandler = (e) => {
     e.preventDefault();
-    if (searchedValue.trim()) { // Prevent empty searches
+    if (searchedValue.trim()) {
       dispatch(search(searchedValue));
     }
   };
 
   useEffect(() => {
-    // Safer: dispatch empty string instead of null
     dispatch(search(""));
   }, [dispatch]);
 
-  // Safe rendering of username (ensure it's always a string)
+  // Safe username rendering
   const safeUsername = currentUser ?.username ? String(currentUser .username) : '';
 
   return (
     <>
       <TopNavWrapper>
-  {/* <TopNavbar /> - Commented out for debugging */}
-</TopNavWrapper>
-     
-      <AppBar 
-        position="static" 
-        color="default" 
+        {/* <TopNavbar /> - Commented out for debugging */}
+      </TopNavWrapper>
+
+      <AppBar
+        position="static"
+        color="default"
         elevation={2}
         sx={{ background: 'linear-gradient(90deg, #e3f2fd 0%, #fff 100%)' }}
       >
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', px: isMobile ? 1 : 3 }}>
-          
+
           {/* Left section: Language + Search */}
           <Box sx={{ display: 'flex', alignItems: 'center', flex: 1 }}>
             <Typography
@@ -141,8 +140,8 @@ const Navbar = () => {
           <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', flex: 1 }}>
             {currentUser  ? (
               <>
-                <Link 
-                  to={`/profile/${currentUser ._id || ''}`} 
+                <Link
+                  to={`/profile/${currentUser ._id || ''}`}
                   style={{ textDecoration: "none", display: "flex", alignItems: "center" }}
                 >
                   <IconButton size="large" sx={{ color: '#1976d2', mx: 1 }}>
@@ -152,7 +151,7 @@ const Navbar = () => {
                     variant="body1"
                     sx={{ color: '#1976d2', fontWeight: 500, display: { xs: 'none', sm: 'inline' } }}
                   >
-                    {safeUsername} {/* Safe string rendering */}
+                    {safeUsername}
                   </Typography>
                 </Link>
                 <Button
@@ -178,7 +177,6 @@ const Navbar = () => {
               </>
             )}
 
-            {/* Chat link - ensured it's a valid React element */}
             <Link to="/searchuser" style={{ textDecoration: "none" }}>
               <Box sx={{ display: "flex", alignItems: "center" }}>
                 <IconButton size="large" sx={{ color: '#1976d2', mx: 1 }}>
