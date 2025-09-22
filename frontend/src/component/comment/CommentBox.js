@@ -22,7 +22,7 @@ import { publicRequest } from '../../requestMethods';
    <>
      <div className='comment-box-container'>
      <Link to={`/profile/${userinfo}`} style={{ textDecoration: "none" }}>
-     <img  src={ user.profilePicture?user.profilePicture:pf + "DefaultBoy.jpg"} className="comment-box-img" ></img>
+  <img  src={ user.profilePicture?user.profilePicture:pf + "DefaultBoy.jpg"} className="comment-box-img" alt={user?.username ? `${user.username}'s profile picture` : 'Default profile picture'} />
      </Link>
      <div className='comment-box-message-name'>
      <p className='comment-box-message-name-value'>{user && user.username}</p>

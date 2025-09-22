@@ -16,7 +16,7 @@ export default function ChatOnline({ onlineUsers, currentId, setCurrentChat }) {
 
     getFriends();
   }, [currentId]);
-  console.log(onlineUsers)
+  // ...existing code...
   useEffect(() => {
     setOnlineFriends(friends.filter((f) => onlineUsers.includes(f._id)));
   }, [friends, onlineUsers]);
@@ -44,7 +44,7 @@ export default function ChatOnline({ onlineUsers, currentId, setCurrentChat }) {
                   ?o.profilePicture
                   :PF + "DefaultPic.png"
               }
-              alt=""
+              alt={o?.username ? `${o.username}'s profile picture` : 'Default profile picture'}
             />
             <div className="chatOnlineBadge"></div>
           </div>

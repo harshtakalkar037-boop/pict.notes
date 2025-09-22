@@ -71,8 +71,8 @@ const Post = ({ note, postUser }) => {
       response === "YES" && alert("notes deleted successfully");
       response === "YES" && window.location.reload();
     } catch (err) {
-      alert("sorry you can not delete this note");
-      console.log("unsuccess");
+  alert("sorry you can not delete this note");
+  // ...existing code...
     }
   };
 
@@ -85,13 +85,10 @@ const Post = ({ note, postUser }) => {
             style={{ textDecoration: "none" }}
           >
             <img
-              src={
-                postUser && postUser.profilePicture
-                  ? postUser.profilePicture
-                  : pf + "DefaultPic.png"
-              }
+              src={postUser && postUser.profilePicture ? postUser.profilePicture : pf + "DefaultPic.png"}
               className="post-topbar-img"
-            ></img>
+              alt={postUser && postUser.username ? `${postUser.username}'s profile picture` : 'Default profile picture'}
+            />
           </Link>
           <div className="post-topbar-desc">
             <Link
@@ -99,11 +96,11 @@ const Post = ({ note, postUser }) => {
               style={{ textDecoration: "none" }}
             >
               <p className="post-topbar-name">
-                {postUser && postUser.username}
+                {postUser && postUser.username ? postUser.username : "Unknown User"}
               </p>
             </Link>
             <div className="post-topbar-follow-ago-container">
-              <p>{postUser && postUser.followers.length} Followers</p>
+              <p>{postUser && postUser.followers ? postUser.followers.length : 0} Followers</p>
               <p style={{marginLeft:"5px"}}>{format(note.createdAt)}</p>
             </div>
           </div>
@@ -130,11 +127,11 @@ const Post = ({ note, postUser }) => {
                   ? note.thumbnailfilename
                   : pf + "images-notes.jpg"
               }
-              alt="note-thumbnail"
-            ></img>
+              alt={note.notename ? `${note.notename} thumbnail` : 'Note thumbnail'}
+            />
             <div className="View-pdf-1" onClick={seenhandler}>
               <p>View-pdf</p>
-              <img src="/image/icons8-view-50.png" />
+              <img src="/image/icons8-view-50.png" alt="View PDF icon" />
             </div>
           </div>
           <div className="main-post-about" style={{ lineHeight: "1.4" }}>

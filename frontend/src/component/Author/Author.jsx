@@ -55,7 +55,7 @@ const Author = () => {
                         </p>
                         <p className="author-notes-followers-text">Notes</p>
                       </div>
-                      <img src="/image/icons8-vertical-line.png" className="seperation-image"></img>
+                      <img src="/image/icons8-vertical-line.png" className="seperation-image" alt="Vertical separator" />
                       <div className="author-notes-followers">
                         <p className="author-notes-followers-count">
                           {

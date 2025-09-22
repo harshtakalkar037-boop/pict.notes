@@ -27,7 +27,7 @@ const Homeprofile = () => {
      <div className="leftmost-topbar">
 
      <Link to={user ? `/profile/${user._id}` : `/`} style={{ textDecoration: "none", color:"black" }} className="topbar-img-username">
-            <img src={(user && user.profilePicture)?user.profilePicture:pf +"DefaultPic.png"} className="topbar-menu-Img" />
+            <img src={(user && user.profilePicture)?user.profilePicture:pf +"DefaultPic.png"} className="topbar-menu-Img" alt={user?.username ? `${user.username}'s profile picture` : 'Default profile picture'} />
           <p className="menu-username" style={{textAlign:"center"}}>{user?.username}</p>
           </Link>
       

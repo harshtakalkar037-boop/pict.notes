@@ -17,11 +17,8 @@ const HomePost = ({ x }) => {
     fetchuser();
   }, []);
 
-  return (
-    <>
-      <Post note={x} postUser={postuser} />
-    </>
-  );
+  if (!postuser) return null;
+  return <Post note={x} postUser={postuser} />;
 };
 
 export default HomePost;
