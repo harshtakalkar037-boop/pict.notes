@@ -58,3 +58,4 @@ NoteShare is built using a combination of cutting-edge technologies:
 - Real-time Communication: **WebSockets**
 
 
+# pict
