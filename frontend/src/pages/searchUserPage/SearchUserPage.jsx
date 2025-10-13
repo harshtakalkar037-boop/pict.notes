@@ -9,6 +9,8 @@ import { mobile } from "../../responsive"
   width: 100%;
   margin-top: 3vh;
   padding: 20px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: calc(100vh - 80px);
 `;
  const SearchUserPage = () => {
    return (
