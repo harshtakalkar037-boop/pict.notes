@@ -14,7 +14,7 @@ import CircularLoader from '../../component/CircularLoader'
 const Profile = () => {
 
   const { userId } = useParams();
-  const pf = "https://pict-notes.onrender.com";
+  const pf = "https://pictnotes.onrender.com";
   const [user, setuser] = useState({})
   const [post, setpost] = useState([])
   const { currentUser: currentuser } = useSelector((state) => state.user)
