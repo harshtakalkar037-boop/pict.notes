@@ -8,7 +8,7 @@ import {useSelector} from 'react-redux';
 import { Chat,AccountCircle, ExitToApp,Settings,Home} from "@material-ui/icons";
 const Homeprofile = () => {
 
-    const pf="https://pict-notes.onrender.com/";
+  const pf="https://pictnotes.onrender.com/";
   
     const {currentUser,isFetching} = useSelector((state)=>state.user)
     const user=currentUser
@@ -37,30 +37,30 @@ const Homeprofile = () => {
 
      <Link to={`/`} style={{ textDecoration: "none" }} className="profile-link-icons">
       <div className="menuItem">
-      <Home />
+      <Home style={{color: "#667eea"}}/>
       <p className="leftmost-links">Home</p> 
       </div>     
      </Link>
       <Link to={user ? `/profile/${user._id}` : `/`} style={{ textDecoration: "none", color: "#214368" }} className="profile-link-icons">
       <div className="menuItem">
-      <AccountCircle />
+      <AccountCircle style={{color: "#764ba2"}}/>
       <p className="leftmost-links">View Profile</p> 
       </div>     
      </Link>
      <Link to={`/messenger`} style={{textDecoration:"none",color:"#38393b"}} className="profile-link-icons" >
         <div className="menuItem">
-           <Chat style={{color:"rgb(43, 68, 97)"}}/>
+           <Chat style={{color:"#4299e1"}}/>
            <p className="leftmost-links">Chat</p>
         </div>
       </Link>
        <Link to={`/profile/update`} style={{textDecoration:"none"}} className="profile-link-icons" >
         <div className="menuItem">
-           <Settings />
+           <Settings style={{color: "#48bb78"}}/>
            <p className="leftmost-links">Setting</p>
         </div>
       </Link>
         <div className="menuItem" id="topbar-logout" onClick={logouthandler}>
-           <ExitToApp />
+           <ExitToApp style={{color: "#f56565"}}/>
            <p className="leftmost-links">Logout</p>
           </div> 
 
