@@ -20,7 +20,7 @@ export default function Messenger() {
   const scrollRef = useRef();
 
   useEffect(() => {
-    // https://notesharing-socket.onrender.com/
+  // https://studysphere-socket.onrender.com/
     const EndPoint="https://pict-notes-socket.onrender.com/";
     socket.current = io(EndPoint);
     socket.current.on("getMessage", (data) => {
@@ -147,7 +147,7 @@ export default function Messenger() {
           </div>
         </div>
         <div className="chatOnline">
-          <p style={{fontSize:"25px",margin:"2vh",borderBottom:"1px solid brown"}}>Online Users</p>
+          <p style={{fontSize:"25px",margin:"2vh",borderBottom:"2px solid #e2e8f0", color: "#2d3748", paddingBottom: "10px"}}>Online Users</p>
           <div className="chatOnlineWrapper">
             <ChatOnline
               onlineUsers={onlineUsers}
