@@ -24,10 +24,13 @@ const Wrapper = styled.div`
   ${mobile({ marginTop: "1vh"})}
 `;
 const SearchContainer = styled.form`
-  border: 1px solid lightgray;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   padding: 5px;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
   ${mobile({ width: "80%" })}
 `;
 
@@ -38,31 +41,46 @@ const Input = styled.input`
   height: 40px;
   font-size: 16px;
   ${mobile({ height: "30px" })}
-  padding: 5px;
+  padding: 5px 15px;
+  background: transparent;
+  color: #2d3748;
+  &::placeholder {
+    color: #a0aec0;
+  }
 `;
 const SearchButton = styled.button`
   border: none;
   outline: none;
-  background-color: white;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+  &:hover {
+    background-color: #f7fafc;
+  }
 `;
 const ShowmoreButton = styled.button`
   margin: auto;
   border: none;
   outline: none;
-  background-color:#3E8DE3;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   display: flex;
   font-size: 18px;
   align-items: center;
   justify-content: center;
- 
   padding: 2vh;
   padding-left: 3vh;
   padding-right: 3vh;
   cursor: pointer;
   color: white;
-  border-radius: 5px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  transition: all 0.3s ease;
+  font-weight: 600;
   &:hover {
-     background-color: #1b65b1;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
   }
 `;
 
@@ -113,12 +131,12 @@ const RenderPost = () => {
             onChange={(e) => setsearchedItem(e.target.value)}
           />
           <SearchButton type="submit">
-            <Search style={{ color: "gray", fontSize: 30 }} />
+            <Search style={{ color: "#4a5568", fontSize: 30 }} />
           </SearchButton>
         </SearchContainer>
       </Wrapper>
       {
-        notes?.length===0 ? <h3 style={{textAlign:"center"}}>Not Found</h3>:
+        notes?.length===0 ? <h3 style={{textAlign:"center", color: "#4a5568"}}>Not Found</h3>:
         notes.map((p,i)=><HomePost x={p} key={i}/>)
       }
       <ShowmoreButton onClick={()=>{setpostcount(postcount+5)}}>Show More <ArrowForward /></ShowmoreButton>
