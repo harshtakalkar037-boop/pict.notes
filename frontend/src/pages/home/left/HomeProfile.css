@@ -2,9 +2,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    border: 1px solid darkcyan;
+    border: 1px solid #e2e8f0;
     border-radius:20px;
     height: 75vh;
+    background: white;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
 }
 .menu-username{
     color: white;
@@ -12,17 +14,17 @@
 }
 .leftmost-topbar{
     display: flex;
-    border-radius: 20px;
+    border-radius: 20px 20px 0 0;
     padding-top: 2vh;
     flex-direction: column;
     align-items: center;
     height: 20vh;
-    background-color: #3E8DE3;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 .leftmost-topbar Link img{
     height: 50px;
     width: 50px;
-    border: 2px solid cornflowerblue;
+    border: 3px solid rgba(255,255,255,0.3);
     object-fit: cover;
     border-radius: 50%;
     margin-right: -3vw;
@@ -34,14 +36,24 @@
 
 .menuItem{
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    align-items: center;
     margin-top: 1vh;
     margin-bottom: 1vh;
+    padding: 12px 20px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.menuItem:hover{
+    background: #f7fafc;
+    transform: translateX(5px);
 }
 .leftmost-links{
     font-size: 17px;
     font-weight: 600;
-    color: black;
+    color: #2d3748;
+    margin-left: 15px;
 }
 .contact-text{
     display: flex;
@@ -56,7 +68,7 @@
 }
 .contact-upper p{
     text-align: center;
-    color: black;
+    color: #718096;
 }
 
 .logout{
@@ -68,6 +80,7 @@
     display: flex;
     flex-direction: column;
     align-items: start;
+    padding: 20px;
 }
 
 @media only screen and (max-width: 768px) {
@@ -85,10 +98,9 @@
         margin-bottom: 1vh;
     }
     .contact-text a{
-        color: black;
+        color: #2d3748;
         margin-top: 2vh;
         margin-left: 1vh;
         margin-right: 1vh;
     }
 }
- 
