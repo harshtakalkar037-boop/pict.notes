@@ -1,72 +1,100 @@
-import React, { useContext, useRef } from "react";
-import "./HomeProfile.css";
-import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import Media from '../../../loader/Loader.js'
-import '../../../component/topbar/Topbar.css'
-import {useSelector} from 'react-redux';
-import { Chat,AccountCircle, ExitToApp,Settings,Home} from "@material-ui/icons";
-const Homeprofile = () => {
 
-  const pf="https://pict-notes.onrender.com/";
-  
-    const {currentUser,isFetching} = useSelector((state)=>state.user)
-    const user=currentUser
-       
-      const logouthandler=()=>{
-        console.log("logout")
+
+import React from "react";
+import { Link } from "react-router-dom";
+import { useSelector } from 'react-redux';
+import { Chat, AccountCircle, ExitToApp, Settings, Home } from "@material-ui/icons";
+import Media from '../../../loader/Loader.js';
+import "./HomeProfile.css";
+import '../../../component/topbar/Topbar.css';
+
+const Homeprofile = () => {
+    const pf = "https://pict-notes.onrender.com/";
+    
+    const { currentUser, isFetching } = useSelector((state) => state.user);
+    const user = currentUser;
+
+    const logouthandler = () => {
+        console.log("logout");
         localStorage.clear();
         window.location.reload();
-      }
-   if(isFetching){
-    return <Media />
-   }
+    };
 
-  return (
-    <> 
-     <div className="leftmost-topbar">
+    if (isFetching) {
+        return <Media />;
+    }
 
-     <Link to={user ? `/profile/${user._id}` : `/`} style={{ textDecoration: "none", color:"black" }} className="topbar-img-username">
-            <img src={(user && user.profilePicture)?user.profilePicture:pf +"DefaultPic.png"} className="topbar-menu-Img" />
-          <p className="menu-username" style={{textAlign:"center"}}>{user?.username}</p>
-          </Link>
-      
-     </div>
-     
-    <div className="leftmost-desc">
-
-     <Link to={`/`} style={{ textDecoration: "none" }} className="profile-link-icons">
-      <div className="menuItem">
-      <Home style={{color: "#667eea"}}/>
-      <p className="leftmost-links">Home</p> 
-      </div>     
-     </Link>
-      <Link to={user ? `/profile/${user._id}` : `/`} style={{ textDecoration: "none", color: "#214368" }} className="profile-link-icons">
-      <div className="menuItem">
-      <AccountCircle style={{color: "#764ba2"}}/>
-      <p className="leftmost-links">View Profile</p> 
-      </div>     
-     </Link>
-     <Link to={`/messenger`} style={{textDecoration:"none",color:"#38393b"}} className="profile-link-icons" >
-        <div className="menuItem">
-           <Chat style={{color:"#4299e1"}}/>
-           <p className="leftmost-links">Chat</p>
+    return (
+        <div className="homeprofile-container">
+            {/* User Profile Section */}
+            <div className="homeprofile-header">
+                <Link 
+                    to={user ? `/profile/${user._id}` : `/`} 
+                    className="homeprofile-user-link"
+                >
+                    <img 
+                        src={(user && user.profilePicture) ? user.profilePicture : (pf + "DefaultPic.png")} 
+                        alt="Profile" 
+                        className="homeprofile-avatar" 
+                        onError={(e) => {
+                            e.target.src = pf + "DefaultPic.png";
+                        }}
+                    />
+                    <p className="homeprofile-username">
+                        {user?.username}
+                    </p>
+                </Link>
+            </div>
+            
+            {/* Navigation Menu */}
+            <div className="homeprofile-menu">
+                <Link to={`/`} className="homeprofile-menu-item">
+                    <div className="homeprofile-menu-content">
+                        <Home className="homeprofile-icon" />
+                        <span className="homeprofile-menu-text">Home</span> 
+                    </div>     
+                </Link>
+                
+                <Link 
+                    to={user ? `/profile/${user._id}` : `/`} 
+                    className="homeprofile-menu-item"
+                >
+                    <div className="homeprofile-menu-content">
+                        <AccountCircle className="homeprofile-icon" />
+                        <span className="homeprofile-menu-text">View Profile</span> 
+                    </div>     
+                </Link>
+                
+                <Link 
+                    to={`/messenger`} 
+                    className="homeprofile-menu-item"
+                >
+                    <div className="homeprofile-menu-content">
+                        <Chat className="homeprofile-icon chat-icon" />
+                        <span className="homeprofile-menu-text">Chat</span>
+                    </div>
+                </Link>
+                
+                <Link 
+                    to={`/profile/update`} 
+                    className="homeprofile-menu-item"
+                >
+                    <div className="homeprofile-menu-content">
+                        <Settings className="homeprofile-icon" />
+                        <span className="homeprofile-menu-text">Setting</span>
+                    </div>
+                </Link>
+                
+                {/* Logout Button */}
+                <div className="homeprofile-menu-item logout-item" onClick={logouthandler}>
+                    <div className="homeprofile-menu-content">
+                        <ExitToApp className="homeprofile-icon" />
+                        <span className="homeprofile-menu-text">Logout</span>
+                    </div>
+                </div> 
+            </div>
         </div>
-      </Link>
-       <Link to={`/profile/update`} style={{textDecoration:"none"}} className="profile-link-icons" >
-        <div className="menuItem">
-           <Settings style={{color: "#48bb78"}}/>
-           <p className="leftmost-links">Setting</p>
-        </div>
-      </Link>
-        <div className="menuItem" id="topbar-logout" onClick={logouthandler}>
-           <ExitToApp style={{color: "#f56565"}}/>
-           <p className="leftmost-links">Logout</p>
-          </div> 
+    );
+};
 
-   </div>
-    </>
-  )
-}
-
-export default Homeprofile
+export default Homeprofile;
