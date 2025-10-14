@@ -10,8 +10,10 @@ import { logout, search } from "../redux/userRedux";
 import { useRef } from "react";
 
 const Container = styled.div`
-  height: 80px; /* Increased height */
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  height: 80px;
+  background: white;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
   ${mobile({ height: "70px" })}
 `;
 
@@ -33,19 +35,25 @@ const Left = styled.div`
 const Language = styled.span`
   font-size: 14px;
   cursor: pointer;
-  color: white;
+  color: #718096;
   ${mobile({ display: "none" })}
 `;
 
 const SearchContainer = styled.form`
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  border: 2px solid #e2e8f0;
   border-radius: 25px;
   display: flex;
   align-items: center;
   margin-left: 25px;
   padding: 8px 15px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  background: white;
+  transition: all 0.3s ease;
+  
+  &:focus-within {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  }
+  
   ${mobile({ marginLeft: "10px", padding: "6px 12px" })}
 `;
 
@@ -53,11 +61,14 @@ const Input = styled.input`
   border: none;
   outline: none;
   background: transparent;
-  color: white;
+  color: #2d3748;
   font-size: 14px;
+  width: 200px;
+  
   &::placeholder {
-    color: rgba(255, 255, 255, 0.7);
+    color: #a0aec0;
   }
+  
   ${mobile({ width: "120px", fontSize: "12px" })}
 `;
 
@@ -78,19 +89,17 @@ const LogoContainer = styled.div`
 const InstitutionName = styled.span`
   font-size: 10px;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.9);
+  color: #718096;
   letter-spacing: 1.2px;
   text-transform: uppercase;
   margin-bottom: 2px;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 `;
 
 const Logo = styled.h1`
   font-weight: 800;
-  color: white;
+  color: #2d3748;
   margin: 0;
-  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-  background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -114,18 +123,21 @@ const MenuItem = styled.div`
   padding: 8px 12px;
   border-radius: 8px;
   transition: all 0.3s ease;
+  
   &:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: #f7fafc;
     transform: translateY(-2px);
   }
+  
   ${mobile({ marginLeft: "10px", marginRight: "5px", flexDirection: "column", padding: "6px 8px" })}
 `;
 
 const Item = styled.p`
   font-size: 16px;
   margin-left: 8px;
-  color: white;
+  color: #4a5568;
   font-weight: 600;
+  
   ${mobile({ fontSize: "11px", marginLeft: "0", marginTop: "2px" })}
 `;
 
@@ -136,8 +148,9 @@ const Button = styled.button`
   cursor: pointer;
   margin-left: 8px;
   font-size: 16px;
-  color: white;
+  color: #4a5568;
   font-weight: 600;
+  
   ${mobile({ fontSize: "11px", marginLeft: "0" })}
 `;
 
@@ -146,7 +159,7 @@ const SearchButton = styled.button`
   outline: none;
   background: transparent;
   cursor: pointer;
-  color: white;
+  color: #667eea;
 `;
 
 const Navbar = () => {
@@ -181,7 +194,7 @@ const Navbar = () => {
               onChange={(e) => setsearchedValue(e.target.value)}
             />
             <SearchButton type="submit">
-              <Search style={{ color: "white", fontSize: 18 }} />
+              <Search style={{ fontSize: 18 }} />
             </SearchButton>
           </SearchContainer>
         </Left>
@@ -198,12 +211,12 @@ const Navbar = () => {
             <>
               <Link to={"/profile/" + currentUser._id} style={{ textDecoration: "none" }}>
                 <MenuItem>
-                  <AccountCircle style={{ color: "white" }} />
+                  <AccountCircle style={{ color: "#667eea" }} />
                   <Item>{currentUser.username}</Item>
                 </MenuItem>
               </Link>
               <MenuItem>
-                <ExitToApp style={{ color: "white" }} onClick={logoutHandler} />
+                <ExitToApp style={{ color: "#e53e3e" }} onClick={logoutHandler} />
                 <Button onClick={logoutHandler}>Logout</Button>
               </MenuItem>
             </>
@@ -223,7 +236,7 @@ const Navbar = () => {
           )}
           <Link to="/searchuser" style={{ textDecoration: "none" }}>
             <MenuItem>
-              <Chat style={{ color: "white" }} />
+              <Chat style={{ color: "#667eea" }} />
               <Item>Chat</Item>
             </MenuItem>
           </Link>
