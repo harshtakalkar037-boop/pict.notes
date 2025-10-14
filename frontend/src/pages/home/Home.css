@@ -1,9 +1,11 @@
 .home-container{
     padding: 20px 20px;
-    background: #f8fafc;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
 }
 .main{
     display: flex;
+    gap: 20px;
 }
 .featured-authors-text{
     font-size: 25px;
@@ -22,21 +24,20 @@
     display: flex;
     flex-direction: column;
     flex: 2;
-    margin-right: 3vh;
 }
 .right-container{
     display: flex;
     flex-direction: column;
     flex: 2.5;
-    margin-left: 3vh;
 }
 @media only screen and (max-width: 768px) {
     .home-container{
         padding: 10px 10px;
-        background: #ffffff;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     }
     .main{
         display: block;
+        gap: 0;
     }
     .right-container{
         display: none;
