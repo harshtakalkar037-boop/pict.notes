@@ -38,27 +38,30 @@ const Author = () => {
     alignItems: 'center',
     padding: '20px',
     borderRadius: '15px',
-    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', // STRONG PURPLE GRADIENT
+    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
     boxShadow: '0 8px 25px rgba(102, 126, 234, 0.4)',
     border: '2px solid #5a6fd8',
     minWidth: '200px',
     flexShrink: 0,
-    color: 'white' // WHITE TEXT
+    color: 'white'
   };
 
+  // FORCE CIRCLE - Add !important equivalent in inline styles
   const authorImageStyle = {
     height: '80px',
     width: '80px',
-    borderRadius: '50%',
+    borderRadius: '50% !important',
+    WebkitBorderRadius: '50% !important',
+    MozBorderRadius: '50% !important',
     objectFit: 'cover',
-    border: '3px solid rgba(255, 255, 255, 0.5)', // WHITE BORDER
+    border: '3px solid rgba(255, 255, 255, 0.5)',
     marginBottom: '12px'
   };
 
   const authorNameStyle = {
     fontSize: '16px',
     fontWeight: '600',
-    color: 'white', // WHITE TEXT
+    color: 'white',
     textAlign: 'center',
     marginBottom: '15px'
   };
@@ -66,20 +69,20 @@ const Author = () => {
   const countStyle = {
     fontSize: '18px',
     fontWeight: '700',
-    color: 'white', // WHITE NUMBERS
+    color: 'white',
     margin: '0'
   };
 
   const textStyle = {
     fontSize: '12px',
-    color: 'rgba(255, 255, 255, 0.8)', // LIGHT WHITE TEXT
+    color: 'rgba(255, 255, 255, 0.8)',
     margin: '0'
   };
 
   const separatorStyle = {
     height: '30px',
     width: '2px',
-    backgroundColor: 'rgba(255, 255, 255, 0.3)' // WHITE SEPARATOR
+    backgroundColor: 'rgba(255, 255, 255, 0.3)'
   };
 
   const containerStyle = {
@@ -88,7 +91,7 @@ const Author = () => {
     justifyContent: 'space-around',
     width: '100%',
     padding: '12px 0',
-    borderTop: '1px solid rgba(255, 255, 255, 0.2)' // WHITE BORDER
+    borderTop: '1px solid rgba(255, 255, 255, 0.2)'
   };
 
   return (
@@ -105,6 +108,8 @@ const Author = () => {
                   src={author.profilePicture ? author.profilePicture : pf + "DefaultBoy.jpg"}
                   style={authorImageStyle}
                   alt={author.username}
+                  // ADD INLINE STYLE AS ATTRIBUTE TOO
+                  className="author-profile-img"
                 />
                 <p style={authorNameStyle}>{author.username}</p>
               </Link>
