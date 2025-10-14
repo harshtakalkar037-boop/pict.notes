@@ -48,7 +48,7 @@ const Author = () => {
   const authorImageStyle = {
     height: '80px',
     width: '80px',
-    borderRadius: '50%',
+    borderRadius: '50%', // PERFECT CIRCLE
     objectFit: 'cover',
     border: '3px solid #e2e8f0',
     marginBottom: '12px'
@@ -69,6 +69,18 @@ const Author = () => {
     margin: '0'
   };
 
+  const textStyle = {
+    fontSize: '12px',
+    color: '#718096',
+    margin: '0'
+  };
+
+  const separatorStyle = {
+    height: '30px',
+    width: '2px',
+    backgroundColor: '#e2e8f0'
+  };
+
   return (
     <>
       <p className="featured-author">Featured Authors</p>
@@ -86,15 +98,15 @@ const Author = () => {
                 />
                 <p style={authorNameStyle}>{author.username}</p>
               </Link>
-              <div className="author-notes-followers-container">
-                <div className="author-notes-followers">
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-around', width: '100%', padding: '12px 0', borderTop: '1px solid #e2e8f0' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                   <p style={countStyle}>{author.notes_length}</p>
-                  <p className="author-notes-followers-text">Notes</p>
+                  <p style={textStyle}>Notes</p>
                 </div>
-                <img src="/image/icons8-vertical-line.png" className="seperation-image" alt="separator" />
-                <div className="author-notes-followers">
+                <div style={separatorStyle}></div>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                   <p style={countStyle}>{author.followers_length}</p>
-                  <p className="author-notes-followers-text">Followers</p>
+                  <p style={textStyle}>Followers</p>
                 </div>
               </div>
             </div>
