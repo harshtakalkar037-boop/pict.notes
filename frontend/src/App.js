@@ -1,4 +1,4 @@
- import React, { useContext } from "react";
+import React, { useContext } from "react";
 import { Route,Routes, Switch ,Navigate} from "react-router-dom";
 import Login from './pages/login/Login';
 import Regiser from './pages/register/Register';
