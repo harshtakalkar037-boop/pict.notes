@@ -22,32 +22,4 @@ function Navbar() {
     <NavbarContainer extendNavbar={extendNavbar}>
       <NavbarInnerContainer>
         <LeftContainer>
-        {!extendNavbar && <Logo>
-          <Link to='/' style={{textDecoration:"none",color:"black"}}>
-          NoteSharing
-          </Link>
-          </Logo>}
-      </LeftContainer>
-        <RightContainer>
-        <NavbarLinkContainer>
-            <NavbarLink to="/"> Home</NavbarLink>
-            <OpenLinksButton
-              onClick={() => {
-                setExtendNavbar((curr) => !curr);
-              }}
-            >
-              {extendNavbar ? <>&#10005;</> : <> &#8801;</>}
-            </OpenLinksButton>
-          </NavbarLinkContainer>
-        </RightContainer>
-      </NavbarInnerContainer>
-      {extendNavbar && (
-        <NavbarExtendedContainer>
-          <Homeprofile />
-        </NavbarExtendedContainer>
-      )}
-    </NavbarContainer>
-  );
-}
-
-export default Navbar;
+       
