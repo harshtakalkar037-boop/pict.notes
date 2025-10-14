@@ -1,3 +1,6 @@
+/* Force CSS Update - Change this number when updating */
+/* Version: 3 */
+
 .home-container{
     padding: 20px 20px;
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
@@ -30,23 +33,8 @@
     flex-direction: column;
     flex: 2.5;
 }
-@media only screen and (max-width: 768px) {
-    .home-container{
-        padding: 10px 10px;
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    }
-    .main{
-        display: block;
-        gap: 0;
-    }
-    .right-container{
-        display: none;
-    }
-    .left-container{
-        display: none;
-    }
-}
-/* Author Styles - Temporary Fix */
+
+/* AUTHOR STYLES - ADDED DIRECTLY TO HOME.CSS */
 .featured-author{
     font-size: 25px;
     font-weight: 600;
@@ -141,4 +129,32 @@
     height: 30px;
     width: 2px;
     background: #e2e8f0;
+}
+
+@media only screen and (max-width: 768px) {
+    .home-container{
+        padding: 10px 10px;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    }
+    .main{
+        display: block;
+        gap: 0;
+    }
+    .right-container{
+        display: none;
+    }
+    .left-container{
+        display: none;
+    }
+    
+    /* Mobile author styles */
+    .author-card{
+        min-width: 170px;
+        padding: 15px;
+    }
+    
+    .author-image{
+        height: 65px;
+        width: 65px;
+    }
 }
