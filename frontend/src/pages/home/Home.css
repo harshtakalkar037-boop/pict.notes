@@ -1,40 +1,47 @@
-/* Force CSS Update - Change this number when updating */
-/* Version: 3 */
-
+/* Home.css - Fixed Version */
 .home-container{
-    padding: 20px 20px;
+    padding: 20px;
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     min-height: 100vh;
 }
+
 .main{
     display: flex;
     gap: 20px;
+    margin-top: 20px;
 }
+
 .featured-authors-text{
     font-size: 25px;
     font-weight: 600;
     color: #2d3748;
+    margin-bottom: 15px;
 }
+
 .home-top{
     margin-bottom: 2vh;
 }
+
 .center-container{
- display: flex;
- flex-direction: column;
- flex: 5;
+    display: flex;
+    flex-direction: column;
+    flex: 5;
+    gap: 20px;
 }
+
 .left-container{
     display: flex;
     flex-direction: column;
     flex: 2;
 }
+
 .right-container{
     display: flex;
     flex-direction: column;
     flex: 2.5;
 }
 
-/* AUTHOR STYLES - ADDED DIRECTLY TO HOME.CSS */
+/* AUTHOR STYLES */
 .featured-author{
     font-size: 25px;
     font-weight: 600;
@@ -131,10 +138,17 @@
     background: #e2e8f0;
 }
 
+/* Ensure all components have proper spacing */
+.upload-note-container,
+.author-container,
+.build-conversation-container,
+.homeprofile-container {
+    margin-bottom: 20px;
+}
+
 @media only screen and (max-width: 768px) {
     .home-container{
-        padding: 10px 10px;
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        padding: 10px;
     }
     .main{
         display: block;
@@ -156,5 +170,9 @@
     .author-image{
         height: 65px;
         width: 65px;
+    }
+    
+    .center-container {
+        width: 100%;
     }
 }
