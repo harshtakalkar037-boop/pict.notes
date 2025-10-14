@@ -30,7 +30,7 @@ const Footer = () => {
 
           <div className="footer-bottom-container">
             <p className="copyright">
-            Copyright © 2023 StudySphere. All Rights Reserved
+            Copyright © 2025 StudySphere. All Rights Reserved
             </p>
             <div className="footer-link">
               <Link to="/" className="footer-link-item" style={{textDecoration:"none"}}>
