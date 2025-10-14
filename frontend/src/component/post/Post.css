@@ -75,7 +75,7 @@
 
 .post-topbar-edit-delete-container{
     display: flex;
-    gap: 15px;
+    gap: 20px;
     align-items: center;
 }
 
@@ -84,18 +84,28 @@
     color: white;
     cursor: pointer;
     transition: all 0.3s ease;
-    padding: 8px;
+    padding: 10px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    font-size: 20px !important;
 }
 
-.post-topbar-edit-icon:hover,
+.post-topbar-edit-icon:hover{
+    background: rgba(76, 175, 80, 0.8);
+    transform: scale(1.15);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+}
+
 .delete-icon:hover{
-    background: rgba(255, 255, 255, 0.2);
-    transform: scale(1.1);
+    background: rgba(244, 67, 54, 0.8);
+    transform: scale(1.15);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 12px rgba(244, 67, 54, 0.4);
 }
 
-/* Main Content */
+/* Main Content - FIXED THUMBNAIL */
 .main-post{
     display: flex;
     height: 57vh;
@@ -109,17 +119,19 @@
     width: 40%;
     cursor: pointer;
     overflow: hidden;
+    background: #f8fafc;
 }
 
 .post-thumbnail{
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     transition: all 0.3s ease;
+    background: white;
 }
 
 .main-post-img-container:hover .post-thumbnail {
-    transform: scale(1.05);
+    transform: scale(1.02);
 }
 
 .view-pdf-btn{
@@ -290,6 +302,16 @@
         font-size: 11px;
     }
     
+    .post-topbar-edit-delete-container{
+        gap: 15px;
+    }
+    
+    .post-topbar-edit-icon,
+    .delete-icon{
+        padding: 8px;
+        font-size: 18px !important;
+    }
+    
     .main-post{
         flex-direction: column;
         height: auto;
@@ -301,11 +323,12 @@
     }
     
     .main-post-img-container{
-        height: 200px;
+        height: 250px;
     }
     
     .post-thumbnail{
         height: 100%;
+        object-fit: contain;
     }
     
     .main-post-about{
