@@ -1,95 +1,128 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useSelector } from 'react-redux';
-import { Chat, AccountCircle, ExitToApp, Settings, Home } from "@material-ui/icons";
-import Media from '../../../loader/Loader.js';
-import "./HomeProfile.css";
-import '../../../component/topbar/Topbar.css';
+/* HomeProfile.css - Purple Theme */
+.homeprofile-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, #f3e5f5 0%, #e8eaf6 100%);
+    border-right: 1px solid #d1c4e9;
+    height: 100vh;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
 
-const Homeprofile = () => {
-    const pf = "https://pict-notes.onrender.com/";
-    
-    const { currentUser, isFetching } = useSelector((state) => state.user);
-    const user = currentUser;
+.homeprofile-header {
+    padding: 25px 15px;
+    border-bottom: 2px solid #7e57c2;
+    background: white;
+    background: linear-gradient(135deg, #7b1fa2 0%, #4527a0 100%);
+}
 
-    const logouthandler = () => {
-        console.log("logout");
-        localStorage.clear();
-        window.location.reload();
-    };
+.homeprofile-user-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+}
 
-    if (isFetching) {
-        return <Media />;
-    }
+.homeprofile-avatar {
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #e1bee7;
+    margin-bottom: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 
-    return (
-        <div className="homeprofile-container">
-            {/* User Profile Section */}
-            <div className="homeprofile-header">
-                <Link 
-                    to={user ? `/profile/${user._id}` : `/`} 
-                    className="homeprofile-user-link"
-                >
-                    <img 
-                        src={(user && user.profilePicture) ? user.profilePicture : pf + "DefaultPic.png"} 
-                        alt="Profile" 
-                        className="homeprofile-avatar" 
-                    />
-                    <p className="homeprofile-username">
-                        {user?.username}
-                    </p>
-                </Link>
-            </div>
-            
-            {/* Navigation Menu */}
-            <div className="homeprofile-menu">
-                <Link to={`/`} className="homeprofile-menu-item">
-                    <div className="homeprofile-menu-content">
-                        <Home className="homeprofile-icon" />
-                        <span className="homeprofile-menu-text">Home</span> 
-                    </div>     
-                </Link>
-                
-                <Link 
-                    to={user ? `/profile/${user._id}` : `/`} 
-                    className="homeprofile-menu-item"
-                >
-                    <div className="homeprofile-menu-content">
-                        <AccountCircle className="homeprofile-icon" />
-                        <span className="homeprofile-menu-text">View Profile</span> 
-                    </div>     
-                </Link>
-                
-                <Link 
-                    to={`/messenger`} 
-                    className="homeprofile-menu-item"
-                >
-                    <div className="homeprofile-menu-content">
-                        <Chat className="homeprofile-icon chat-icon" />
-                        <span className="homeprofile-menu-text">Chat</span>
-                    </div>
-                </Link>
-                
-                <Link 
-                    to={`/profile/update`} 
-                    className="homeprofile-menu-item"
-                >
-                    <div className="homeprofile-menu-content">
-                        <Settings className="homeprofile-icon" />
-                        <span className="homeprofile-menu-text">Setting</span>
-                    </div>
-                </Link>
-                
-                {/* Logout Button */}
-                <div className="homeprofile-menu-item logout-item" onClick={logouthandler}>
-                    <div className="homeprofile-menu-content">
-                        <ExitToApp className="homeprofile-icon" />
-                        <span className="homeprofile-menu-text">Logout</span>
-                    </div>
-                </div> 
-            </div>
-        </div>
-    );
-};
+.homeprofile-username {
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    margin: 0;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
 
-export default Homeprofile;
+.homeprofile-menu {
+    padding: 25px 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.homeprofile-menu-item {
+    padding: 14px 25px;
+    text-decoration: none;
+    color: #5e35b1;
+    transition: all 0.3s ease;
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin: 0 10px;
+    border-radius: 8px;
+}
+
+.homeprofile-menu-item:hover {
+    background: linear-gradient(135deg, #7e57c2 0%, #5e35b1 100%);
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(126, 87, 194, 0.3);
+}
+
+.homeprofile-menu-item:hover .homeprofile-menu-text {
+    color: white;
+}
+
+.homeprofile-menu-item:hover .homeprofile-icon {
+    color: white;
+}
+
+.homeprofile-menu-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.homeprofile-icon {
+    color: #7e57c2;
+    font-size: 24px;
+    transition: all 0.3s ease;
+}
+
+.chat-icon {
+    color: #5e35b1;
+}
+
+.homeprofile-menu-text {
+    font-size: 15px;
+    font-weight: 500;
+    color: #5e35b1;
+    transition: all 0.3s ease;
+}
+
+.logout-item {
+    margin-top: auto;
+    border-top: 2px solid #d1c4e9;
+    padding-top: 20px;
+    margin: 20px 10px 0 10px;
+}
+
+.logout-item .homeprofile-menu-text {
+    color: #f44336;
+    font-weight: 600;
+}
+
+.logout-item .homeprofile-icon {
+    color: #f44336;
+}
+
+.logout-item:hover {
+    background: linear-gradient(135deg, #ffcdd2 0%, #ef9a9a 100%);
+}
+
+.logout-item:hover .homeprofile-menu-text {
+    color: #c62828;
+}
+
+.logout-item:hover .homeprofile-icon {
+    color: #c62828;
+}
