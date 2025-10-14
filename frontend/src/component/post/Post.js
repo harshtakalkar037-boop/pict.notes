@@ -17,7 +17,7 @@ import { publicRequest } from "../../requestMethods";
 const Post = ({ note, postUser }) => {
   const { currentUser } = useSelector((state) => state.user);
   const user = currentUser;
-  const pf = "https://pict-notes.onrender.com/";
+  const pf = "https://pictnotes.onrender.com/";
   const [like, setlike] = useState(note.likes.length);
   const [islike, setislike] = useState(false);
   const [isseen, setisseen] = useState(false);
@@ -63,15 +63,15 @@ const Post = ({ note, postUser }) => {
   };
   const DeleteNotes = async () => {
     let response = prompt(
-      `Do you really want to delete this note if yes then type "YES" or type "NO" `
+      `Do you really want to delete this note? If yes, type "YES" or type "NO"`
     );
     try {
       response === "YES" &&
         (await publicRequest.delete(`notes/${note._id}`, { userId: user._id }));
-      response === "YES" && alert("notes deleted successfully");
+      response === "YES" && alert("Note deleted successfully");
       response === "YES" && window.location.reload();
     } catch (err) {
-      alert("sorry you can not delete this note");
+      alert("Sorry, you cannot delete this note");
       console.log("unsuccess");
     }
   };
@@ -91,6 +91,7 @@ const Post = ({ note, postUser }) => {
                   : pf + "DefaultPic.png"
               }
               className="post-topbar-img"
+              alt="User"
             ></img>
           </Link>
           <div className="post-topbar-desc">
@@ -112,12 +113,12 @@ const Post = ({ note, postUser }) => {
             <div className="post-topbar-edit-delete-container">
               <Link
                 to={`/note/update/${note._id}`}
-                style={{ textDecoration: "none",color:"black" }}
+                style={{ textDecoration: "none",color:"white" }}
                 className="post-topbar-edit-icon"
               >
                 <Edit />
               </Link>
-              <Delete onClick={DeleteNotes} className="delete-icon" />
+              <Delete onClick={DeleteNotes} className="delete-icon" style={{color: "white"}} />
             </div>
           )}
         </div>
@@ -133,8 +134,8 @@ const Post = ({ note, postUser }) => {
               alt="note-thumbnail"
             ></img>
             <div className="View-pdf-1" onClick={seenhandler}>
-              <p>View-pdf</p>
-              <img src="/image/icons8-view-50.png" />
+              <p>View PDF</p>
+              <img src="/image/icons8-view-50.png" alt="View" />
             </div>
           </div>
           <div className="main-post-about" style={{ lineHeight: "1.4" }}>
@@ -147,7 +148,7 @@ const Post = ({ note, postUser }) => {
         <div className="post-reaction-container">
           <div className="post-reaction">
             {islike ? (
-              <ThumbUp onClick={likehandler} style={{ color: " #3E8DE3" }} />
+              <ThumbUp onClick={likehandler} style={{ color: "#667eea" }} />
             ) : (
               <ThumbUpAltOutlined onClick={likehandler} />
             )}
@@ -156,7 +157,7 @@ const Post = ({ note, postUser }) => {
           <Link
             to={`/viewcomment/${note._id}`}
             className="link-in-comment"
-            style={{ textDecoration: "none",color:"black" }}
+            style={{ textDecoration: "none",color:"inherit" }}
           >
             <div className="post-reaction">
               <Comment />
