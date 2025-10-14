@@ -1,71 +1,95 @@
-.leftmost-container{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    border: 1px solid #e2e8f0;
-    border-radius: 15px;
-    height: 75vh;
-    background: white;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    overflow: hidden;
-}
-.menu-username{
-    color: white;
-    margin-top: 2vh;
-    font-size: 18px;
-    font-weight: 600;
-}
-.leftmost-topbar{
-    display: flex;
-    border-radius: 15px 15px 0 0;
-    padding-top: 2vh;
-    flex-direction: column;
-    align-items: center;
-    height: 20vh;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-}
-.leftmost-topbar img{
-    height: 60px;
-    width: 60px;
-    border: 3px solid rgba(255,255,255,0.3);
-    object-fit: cover;
-    border-radius: 50%;
-    margin-bottom: 10px;
-}
+import React from "react";
+import { Link } from "react-router-dom";
+import { useSelector } from 'react-redux';
+import { Chat, AccountCircle, ExitToApp, Settings, Home } from "@material-ui/icons";
+import Media from '../../../loader/Loader.js';
+import "./HomeProfile.css";
+import '../../../component/topbar/Topbar.css';
 
-.menuItem{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin-top: 8px;
-    margin-bottom: 8px;
-    padding: 12px 20px;
-    border-radius: 8px;
-    transition: all 0.2s ease;
-    cursor: pointer;
-}
-.menuItem:hover{
-    background: #f7fafc;
-}
-.leftmost-links{
-    font-size: 14px;
-    font-weight: 600;
-    color: #2d3748;
-    margin-left: 12px;
-}
-.leftmost-desc{
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    padding: 15px;
-}
+const Homeprofile = () => {
+    const pf = "https://pict-notes.onrender.com/";
+    
+    const { currentUser, isFetching } = useSelector((state) => state.user);
+    const user = currentUser;
 
-@media only screen and (max-width: 768px) {
-     .leftmost-topbar{
-        width: 100%;
-     }
-     .menuItem{
-        margin-top: 10px;
-        margin-bottom: 10px;
-     }
-}
+    const logouthandler = () => {
+        console.log("logout");
+        localStorage.clear();
+        window.location.reload();
+    };
+
+    if (isFetching) {
+        return <Media />;
+    }
+
+    return (
+        <div className="homeprofile-container">
+            {/* User Profile Section */}
+            <div className="homeprofile-header">
+                <Link 
+                    to={user ? `/profile/${user._id}` : `/`} 
+                    className="homeprofile-user-link"
+                >
+                    <img 
+                        src={(user && user.profilePicture) ? user.profilePicture : pf + "DefaultPic.png"} 
+                        alt="Profile" 
+                        className="homeprofile-avatar" 
+                    />
+                    <p className="homeprofile-username">
+                        {user?.username}
+                    </p>
+                </Link>
+            </div>
+            
+            {/* Navigation Menu */}
+            <div className="homeprofile-menu">
+                <Link to={`/`} className="homeprofile-menu-item">
+                    <div className="homeprofile-menu-content">
+                        <Home className="homeprofile-icon" />
+                        <span className="homeprofile-menu-text">Home</span> 
+                    </div>     
+                </Link>
+                
+                <Link 
+                    to={user ? `/profile/${user._id}` : `/`} 
+                    className="homeprofile-menu-item"
+                >
+                    <div className="homeprofile-menu-content">
+                        <AccountCircle className="homeprofile-icon" />
+                        <span className="homeprofile-menu-text">View Profile</span> 
+                    </div>     
+                </Link>
+                
+                <Link 
+                    to={`/messenger`} 
+                    className="homeprofile-menu-item"
+                >
+                    <div className="homeprofile-menu-content">
+                        <Chat className="homeprofile-icon chat-icon" />
+                        <span className="homeprofile-menu-text">Chat</span>
+                    </div>
+                </Link>
+                
+                <Link 
+                    to={`/profile/update`} 
+                    className="homeprofile-menu-item"
+                >
+                    <div className="homeprofile-menu-content">
+                        <Settings className="homeprofile-icon" />
+                        <span className="homeprofile-menu-text">Setting</span>
+                    </div>
+                </Link>
+                
+                {/* Logout Button */}
+                <div className="homeprofile-menu-item logout-item" onClick={logouthandler}>
+                    <div className="homeprofile-menu-content">
+                        <ExitToApp className="homeprofile-icon" />
+                        <span className="homeprofile-menu-text">Logout</span>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    );
+};
+
+export default Homeprofile;
