@@ -31,9 +31,12 @@ const Homeprofile = () => {
                     className="homeprofile-user-link"
                 >
                     <img 
-                        src={(user && user.profilePicture) ? user.profilePicture : pf + "DefaultPic.png"} 
+                        src={(user && user.profilePicture) ? user.profilePicture : (pf + "DefaultPic.png")} 
                         alt="Profile" 
                         className="homeprofile-avatar" 
+                        onError={(e) => {
+                            e.target.src = pf + "DefaultPic.png";
+                        }}
                     />
                     <p className="homeprofile-username">
                         {user?.username}
