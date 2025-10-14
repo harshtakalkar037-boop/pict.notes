@@ -1,22 +1,18 @@
 .footer-container{
     display: flex;
     flex-direction: column;
-    background-color: rgb(43, 84, 159);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     height: 32vh;
     width: 100%;
     justify-content: center;
     align-items: center;
-    /* padding-left: 3vw;
-    padding-right: 3vw;
-    padding-top: 3vh;
-    padding-bottom: 3vh; */
 }
 .logo{
     font-size: 32px;
     font-weight: 800;
     margin: 0;
     padding: 0;
-    color:white;
+    color: white;
 }
 .about-footer{
     display: flex;
@@ -28,8 +24,6 @@
 .footer-bottom-container{
     display: flex;
     width: 85%;
-    /* height: 6vh; */
-    /* background-color: rgb(29, 64, 130); */
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -51,10 +45,10 @@
 .about-content{
     font-size: 13px;
     font-weight: 300;
-    color: rgb(187, 196, 196);
+    color: rgba(255, 255, 255, 0.8);
 }
 .copyright{
-    color: rgb(255, 255, 255);
+    color: rgba(255, 255, 255, 0.9);
 }
 .footer-link{
     display: flex;
@@ -62,18 +56,26 @@
 .footer-link-item{
     color: white;
     margin-left: 3vw;
-    margin-left: 3vw;
+    margin-right: 3vw;
+    transition: color 0.3s ease;
 }
 .footer-link-item:hover{
-    color: rgb(90, 147, 222);
+    color: #c3cfe2;
 }
 .Contact-contribute-container{
     display: flex;
     flex-direction: column;
 }
 .Contact-contribute-container a{
-font-size: 15px;
-font-weight: 400;
+    font-size: 15px;
+    font-weight: 400;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 8px;
+    transition: color 0.3s ease;
+}
+.Contact-contribute-container a:hover{
+    color: #c3cfe2;
 }
 @media (max-width:700px) {
     .footer-container{
@@ -86,6 +88,8 @@ font-weight: 400;
     }
     .about-content-container{
         text-align: center;
+        width: 100%;
+        margin-bottom: 2vh;
     }
     .footer-bottom-container{
         width: 100%;
@@ -105,11 +109,7 @@ font-weight: 400;
        margin-bottom: 2vh;
        text-align: center;
     }
-    .about-content-container{
-        width: 100%;
-    }
     .footer-link{
-        /* flex-direction: column; */
         width: 100%;
         justify-content: space-around;
         text-align: center;
@@ -123,5 +123,4 @@ font-weight: 400;
         width: 100%;
         margin-top: 2vh;
     }
-     
 }
