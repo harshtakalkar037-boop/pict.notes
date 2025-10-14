@@ -12,6 +12,7 @@ import {
   LogoText
 } from "./Navbar.style";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 function TopNavbar() {
   const [extendNavbar, setExtendNavbar] = useState(false);
@@ -25,18 +26,30 @@ function TopNavbar() {
         </LeftContainer>
         <RightContainer>
           <NavbarLinkContainer>
-            <NavbarLink to="/"> Home</NavbarLink>
+            <Link to="/" style={{ textDecoration: 'none' }}>
+              <NavbarLink>Home</NavbarLink>
+            </Link>
             {user && (
               <>
-                <NavbarLink to={`/profile/${user._id}`}> Profile</NavbarLink>
-                <NavbarLink to="/messenger"> Chat</NavbarLink>
-                <NavbarLink to="/searchuser"> Search</NavbarLink>
+                <Link to={`/profile/${user._id}`} style={{ textDecoration: 'none' }}>
+                  <NavbarLink>Profile</NavbarLink>
+                </Link>
+                <Link to="/messenger" style={{ textDecoration: 'none' }}>
+                  <NavbarLink>Chat</NavbarLink>
+                </Link>
+                <Link to="/searchuser" style={{ textDecoration: 'none' }}>
+                  <NavbarLink>Search</NavbarLink>
+                </Link>
               </>
             )}
             {!user && (
               <>
-                <NavbarLink to="/register"> Register</NavbarLink>
-                <NavbarLink to="/login"> Login</NavbarLink>
+                <Link to="/register" style={{ textDecoration: 'none' }}>
+                  <NavbarLink>Register</NavbarLink>
+                </Link>
+                <Link to="/login" style={{ textDecoration: 'none' }}>
+                  <NavbarLink>Login</NavbarLink>
+                </Link>
               </>
             )}
           </NavbarLinkContainer>
@@ -51,18 +64,30 @@ function TopNavbar() {
       </NavbarInnerContainer>
       {extendNavbar && (
         <NavbarExtendedContainer>
-          <NavbarLinkExtended to="/"> Home</NavbarLinkExtended>
+          <Link to="/" style={{ textDecoration: 'none' }}>
+            <NavbarLinkExtended>Home</NavbarLinkExtended>
+          </Link>
           {user && (
             <>
-              <NavbarLinkExtended to={`/profile/${user._id}`}> Profile</NavbarLinkExtended>
-              <NavbarLinkExtended to="/messenger"> Chat</NavbarLinkExtended>
-              <NavbarLinkExtended to="/searchuser"> Search</NavbarLinkExtended>
+              <Link to={`/profile/${user._id}`} style={{ textDecoration: 'none' }}>
+                <NavbarLinkExtended>Profile</NavbarLinkExtended>
+              </Link>
+              <Link to="/messenger" style={{ textDecoration: 'none' }}>
+                <NavbarLinkExtended>Chat</NavbarLinkExtended>
+              </Link>
+              <Link to="/searchuser" style={{ textDecoration: 'none' }}>
+                <NavbarLinkExtended>Search</NavbarLinkExtended>
+              </Link>
             </>
           )}
           {!user && (
             <>
-              <NavbarLinkExtended to="/register"> Register</NavbarLinkExtended>
-              <NavbarLinkExtended to="/login"> Login</NavbarLinkExtended>
+              <Link to="/register" style={{ textDecoration: 'none' }}>
+                <NavbarLinkExtended>Register</NavbarLinkExtended>
+              </Link>
+              <Link to="/login" style={{ textDecoration: 'none' }}>
+                <NavbarLinkExtended>Login</NavbarLinkExtended>
+              </Link>
             </>
           )}
         </NavbarExtendedContainer>
