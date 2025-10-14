@@ -6,7 +6,8 @@ import axios from "axios";
 import { publicRequest } from "../../requestMethods";
 import {useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import Navbar from '../Navbar'
+import Navbar from '../Navbar';
+
 function UpdatePost() {
   const { notesid } = useParams();
   const { currentUser: user } = useSelector((state) => state.user);
@@ -35,19 +36,19 @@ function UpdatePost() {
         data
       );
       newNote.thumbnailfilename = await res.data.secure_url;
-
     }
     try {
-      await publicRequest.put(`notes/${notesid}`,newNote);
+      await publicRequest.put(`notes/${notesid}`, newNote);
       alert("Note updated successfully!");
       navigate("/");
     } catch (err) {
       alert("Error updating note. Please try again.");
     }
   };
+
   return (
     <>
-    <Navbar />
+      <Navbar />
       <div className="Update-post-container-complete">
         <div className="Update-post-container">
           <p className="Update-post-container-name">Update Your Note</p>
@@ -62,7 +63,7 @@ function UpdatePost() {
                 placeholder="Enter note name"
                 onChange={(e) => setnotename(e.target.value)}
                 className="Update-post-input-block"
-              ></input>
+              />
             </div>
 
             <div className="Update-post-input-box">
@@ -72,8 +73,36 @@ function UpdatePost() {
                 placeholder="Enter description"
                 onChange={(e) => setdesc(e.target.value)}
                 className="Update-post-input-block"
-              ></input>
+              />
             </div>
 
             <div className="Update-post-input-box">
               <p className="Update-post-input-heading">Note File URL</p>
+              <input
+                type="text"
+                className="Update-post-input-block"
+                placeholder="Enter PDF file URL"
+                onChange={(e) => setnoteupdatedfile(e.target.value)}
+              />
+            </div>
+
+            <div className="Update-post-input-box-file">
+              <p className="Update-post-input-heading-file">Thumbnail Image</p>
+              <input
+                type="file"
+                className="Update-post-input-block-file"
+                accept=".png,.jpeg,.jpg"
+                onChange={(e) => setnoteupdatedphoto(e.target.files[0])}
+              />
+            </div>
+            <button type="submit" className="Update-post-container-form-submit">
+              Update Note
+            </button>
+          </form>
+        </div>
+      </div>
+    </>
+  );
+}
+
+export default UpdatePost;
