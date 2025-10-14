@@ -2,10 +2,15 @@
     display: flex;
     flex-direction: column;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    height: 32vh;
+    padding: 40px 20px 20px 20px;
     width: 100%;
     justify-content: center;
     align-items: center;
+}
+.logo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 .logo{
     font-size: 32px;
@@ -13,6 +18,37 @@
     margin: 0;
     padding: 0;
     color: white;
+    margin-bottom: 5px;
+}
+.tagline {
+    font-size: 14px;
+    color: #e2e8f0;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+.social-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+.social-icon {
+    color: white !important;
+    font-size: 20px !important;
 }
 .about-footer{
     display: flex;
@@ -20,6 +56,7 @@
     margin-bottom: 5vh;
     width: 85%;
     justify-content: space-between;
+    align-items: flex-start;
 }
 .footer-bottom-container{
     display: flex;
@@ -27,100 +64,100 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-}
-.crypto-logo{
-    margin-right: 1vw;
-    font-size: 35px;
-    color: white;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 .about-content-container{
     width: 40%;
 }
 .about-us-title{
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
     color: white;
     margin-bottom: 1vh;
 }
 .about-content{
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 300;
     color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
 }
 .copyright{
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
 }
 .footer-link{
     display: flex;
+    gap: 30px;
 }
 .footer-link-item{
     color: white;
-    margin-left: 3vw;
-    margin-right: 3vw;
-    transition: color 0.3s ease;
+    font-weight: 500;
+    transition: all 0.3s ease;
 }
 .footer-link-item:hover{
-    color: #c3cfe2;
+    color: #e2e8f0;
+    transform: translateY(-2px);
 }
 .Contact-contribute-container{
     display: flex;
     flex-direction: column;
+    gap: 10px;
 }
 .Contact-contribute-container a{
-    font-size: 15px;
-    font-weight: 400;
+    font-size: 16px;
+    font-weight: 500;
     color: white;
-    text-decoration: none;
-    margin-bottom: 8px;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
 }
 .Contact-contribute-container a:hover{
-    color: #c3cfe2;
+    color: #e2e8f0;
+    transform: translateX(5px);
 }
-@media (max-width:700px) {
+
+@media (max-width: 768px) {
     .footer-container{
-        height: 41vh;
+        padding: 30px 15px 15px 15px;
+        height: auto;
     }
     .about-footer{
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        text-align: center;
+        gap: 30px;
+        width: 100%;
+    }
+    .logo-section {
+        align-items: center;
     }
     .about-content-container{
-        text-align: center;
         width: 100%;
-        margin-bottom: 2vh;
     }
     .footer-bottom-container{
         width: 100%;
-        flex-direction:column-reverse;
+        flex-direction: column-reverse;
         justify-content: center;
         align-items: center;
-        margin-top: -3vh;
+        gap: 20px;
     }
     .copyright{
         font-size: 14px;
         font-weight: 400;
-        margin-top: 2vh;
-    }
-    .crypto-logo{
-       width: 100%;
-       margin-right: 0;
-       margin-bottom: 2vh;
-       text-align: center;
+        text-align: center;
     }
     .footer-link{
         width: 100%;
         justify-content: space-around;
         text-align: center;
     }
-    .footer-link-item{
-        margin-bottom: 1vh;
-    }
     .Contact-contribute-container{
         flex-direction: row;
         justify-content: space-evenly;
         width: 100%;
         margin-top: 2vh;
+    }
+    .social-icons {
+        justify-content: center;
     }
 }
