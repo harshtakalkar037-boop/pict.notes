@@ -3,10 +3,10 @@
     padding: 0;
     box-sizing: border-box;
     border: 1px solid #e2e8f0;
-    border-radius: 20px;
+    border-radius: 15px;
     height: 75vh;
     background: white;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     overflow: hidden;
 }
 .menu-username{
@@ -17,7 +17,7 @@
 }
 .leftmost-topbar{
     display: flex;
-    border-radius: 20px 20px 0 0;
+    border-radius: 15px 15px 0 0;
     padding-top: 2vh;
     flex-direction: column;
     align-items: center;
@@ -37,28 +37,27 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    margin-top: 1vh;
-    margin-bottom: 1vh;
+    margin-top: 8px;
+    margin-bottom: 8px;
     padding: 12px 20px;
-    border-radius: 10px;
-    transition: all 0.3s ease;
+    border-radius: 8px;
+    transition: all 0.2s ease;
     cursor: pointer;
 }
 .menuItem:hover{
     background: #f7fafc;
-    transform: translateX(5px);
 }
 .leftmost-links{
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
     color: #2d3748;
-    margin-left: 15px;
+    margin-left: 12px;
 }
 .leftmost-desc{
     display: flex;
     flex-direction: column;
     align-items: start;
-    padding: 20px;
+    padding: 15px;
 }
 
 @media only screen and (max-width: 768px) {
@@ -66,7 +65,7 @@
         width: 100%;
      }
      .menuItem{
-        margin-top: 2vh;
-        margin-bottom: 1vh;
+        margin-top: 10px;
+        margin-bottom: 10px;
      }
 }
