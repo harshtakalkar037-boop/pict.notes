@@ -9,6 +9,9 @@ import {
   NavbarLink,
   OpenLinksButton,
   NavbarLinkExtended,
+  LogoContainer,
+  MainLogo,
+  Subtitle,
   LogoText
 } from "./Navbar.style";
 import { useSelector } from "react-redux";
@@ -22,7 +25,10 @@ function TopNavbar() {
     <NavbarContainer extendNavbar={extendNavbar}>
       <NavbarInnerContainer>
         <LeftContainer>
-          <LogoText>StudySphere</LogoText>
+          <LogoContainer>
+            <Subtitle>Pune Institute of Technology</Subtitle>
+            <MainLogo>StudySphere</MainLogo>
+          </LogoContainer>
         </LeftContainer>
         <RightContainer>
           <NavbarLinkContainer>
