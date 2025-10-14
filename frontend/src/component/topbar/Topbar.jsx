@@ -6,14 +6,14 @@ import { useSelector } from "react-redux";
 
 export default function Topbar() {
   const { currentUser: user } = useSelector((state) => state.user);
-  const PF = "https://pictnotes.onrender.com/";
+  const PF = "https://pict-notes.onrender.com/";
 
   return (
     <div className="topbar-container">
       <div className="topbar-left">
         <Link to="/" style={{ textDecoration: "none" }}>
           <div className="logo-container">
-            <span className="institution-name">Pune Institute of Technology</span>
+            <span className="institution-name">Pune Institute of Computer Technology</span>
             <span className="logo">StudySphere</span>
           </div>
         </Link>
