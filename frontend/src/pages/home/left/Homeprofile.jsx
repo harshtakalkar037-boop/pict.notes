@@ -6,35 +6,54 @@ import Media from '../../../loader/Loader.js'
 import '../../../component/topbar/Topbar.css'
 import {useSelector} from 'react-redux';
 import { Chat,AccountCircle, ExitToApp,Settings,Home} from "@material-ui/icons";
-const Homeprofile = () => {
 
-  const pf="https://pictnotes.onrender.com/";
+const Homeprofile = () => {
+  // FIX: Use your actual website URL
+  const pf = "https://pict-notes-home.onrender.com/";
   
-    const {currentUser,isFetching} = useSelector((state)=>state.user)
-    const user=currentUser
-       
-      const logouthandler=()=>{
-        console.log("logout")
-        localStorage.clear();
-        window.location.reload();
-      }
-   if(isFetching){
+  const { currentUser, isFetching } = useSelector((state) => state.user);
+  const user = currentUser;
+     
+  const logouthandler = () => {
+    console.log("logout")
+    localStorage.clear();
+    window.location.reload();
+  }
+
+  if(isFetching){
     return <Media />
-   }
+  }
 
   return (
     <> 
      <div className="leftmost-topbar">
-
-     <Link to={user ? `/profile/${user._id}` : `/`} style={{ textDecoration: "none", color:"black" }} className="topbar-img-username">
-            <img src={(user && user.profilePicture)?user.profilePicture:pf +"DefaultPic.png"} className="topbar-menu-Img" />
-          <p className="menu-username" style={{textAlign:"center"}}>{user?.username}</p>
-          </Link>
-      
+       <Link to={user ? `/profile/${user._id}` : `/`} style={{ textDecoration: "none", color:"black" }} className="topbar-img-username">
+         <img 
+           src={
+             user?.profilePicture 
+               ? user.profilePicture 
+               : pf + "DefaultBoy.jpg"
+           } 
+           className="topbar-menu-Img" 
+           alt="Profile"
+           style={{
+             height: '60px',
+             width: '60px',
+             borderRadius: '50%',
+             objectFit: 'cover',
+             border: '3px solid rgba(255,255,255,0.3)',
+             display: 'block'
+           }}
+           onError={(e) => {
+             console.log("Image failed to load, using default");
+             e.target.src = pf + "DefaultBoy.jpg";
+           }}
+         />
+         <p className="menu-username" style={{textAlign:"center"}}>{user?.username}</p>
+       </Link>
      </div>
      
     <div className="leftmost-desc">
-
      <Link to={`/`} style={{ textDecoration: "none" }} className="profile-link-icons">
       <div className="menuItem">
       <Home style={{color: "#667eea"}}/>
@@ -63,7 +82,6 @@ const Homeprofile = () => {
            <ExitToApp style={{color: "#f56565"}}/>
            <p className="leftmost-links">Logout</p>
           </div> 
-
    </div>
     </>
   )
