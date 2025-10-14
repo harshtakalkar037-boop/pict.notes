@@ -177,11 +177,11 @@
   font-size: 20px !important;
 }
 
-/* Profile Info Section */
+/* Profile Info Section - FIXED OVERLAPPING */
 .profile-info-section {
   max-width: 1200px;
-  margin: -40px auto 40px;
-  padding: 0 20px;
+  margin: 0 auto 40px; /* REMOVED NEGATIVE MARGIN */
+  padding: 40px 20px 0; /* ADDED TOP PADDING */
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 30px;
@@ -193,6 +193,7 @@
   padding: 30px;
   box-shadow: 0 8px 32px rgba(102, 126, 234, 0.1);
   border: 1px solid #e2e8f0;
+  margin-top: 0; /* ENSURES NO OVERLAP */
 }
 
 .info-title {
@@ -358,13 +359,14 @@
   
   .profile-info-section {
     grid-template-columns: 1fr;
-    margin-top: -30px;
+    margin-top: 0; /* REMOVED NEGATIVE MARGIN */
     gap: 20px;
-    padding: 0 15px;
+    padding: 30px 15px 0; /* ADJUSTED PADDING */
   }
   
   .info-card, .achievements-card {
     padding: 20px;
+    margin-top: 0; /* ENSURES NO OVERLAP */
   }
   
   .profile-actions {
@@ -415,5 +417,9 @@
   
   .achievement-value {
     font-size: 1.3rem;
+  }
+  
+  .profile-info-section {
+    padding: 20px 15px 0;
   }
 }
