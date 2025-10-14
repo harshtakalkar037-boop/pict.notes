@@ -3,6 +3,7 @@ import './Topbar.css'
 import { Search, Chat, Notifications, Person } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+
 export default function Topbar() {
   const { currentUser: user } = useSelector((state) => state.user);
   const PF = "https://pictnotes.onrender.com/";
@@ -11,7 +12,10 @@ export default function Topbar() {
     <div className="topbar-container">
       <div className="topbar-left">
         <Link to="/" style={{ textDecoration: "none" }}>
-          <span className="logo">StudySphere</span>
+          <div className="logo-container">
+            <span className="institution-name">Pune Institute of Technology</span>
+            <span className="logo">StudySphere</span>
+          </div>
         </Link>
       </div>
       <div className="topbar-center">
