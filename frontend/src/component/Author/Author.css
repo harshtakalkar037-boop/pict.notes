@@ -16,7 +16,6 @@
     scrollbar-color: #667eea #f1f5f9;
 }
 
-/* Webkit browsers (Chrome, Safari) */
 .author-container::-webkit-scrollbar {
     height: 8px;
 }
@@ -31,10 +30,6 @@
     border-radius: 10px;
 }
 
-.author-container::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
-}
-
 .author-card{
     display: flex;
     flex-direction: column;
@@ -46,13 +41,6 @@
     border: 1px solid #e2e8f0;
     min-width: 200px;
     flex-shrink: 0;
-    transition: all 0.2s ease;
-}
-
-.author-card:hover{
-    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.2);
-    border-color: #667eea;
-    transform: translateY(-2px);
 }
 
 .author-image{
@@ -62,11 +50,6 @@
     object-fit: cover;
     border: 3px solid #e2e8f0;
     margin-bottom: 12px;
-    transition: all 0.2s ease;
-}
-
-.author-card:hover .author-image{
-    border-color: #667eea;
 }
 
 .author-name{
@@ -108,17 +91,5 @@
 .seperation-image{
     height: 30px;
     width: 2px;
-    background: linear-gradient(to bottom, #e2e8f0, #cbd5e0, #e2e8f0);
-}
-
-@media only screen and (max-width: 768px) {
-    .author-card{
-        min-width: 170px;
-        padding: 15px;
-    }
-    
-    .author-image{
-        height: 65px;
-        width: 65px;
-    }
+    background: #e2e8f0;
 }
