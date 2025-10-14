@@ -19,7 +19,7 @@ function UpdatePost() {
 
   const UpdateNoteHandler = async (e) => {
     e.preventDefault();
-    alert("Updating started...");
+    alert("Updating note...");
     const newNote = {
       userId: user._id,
       notename: notename,
@@ -39,67 +39,41 @@ function UpdatePost() {
     }
     try {
       await publicRequest.put(`notes/${notesid}`,newNote);
-      alert("successfully uploaded...");
+      alert("Note updated successfully!");
       navigate("/");
-    } catch (err) {}
+    } catch (err) {
+      alert("Error updating note. Please try again.");
+    }
   };
   return (
     <>
     <Navbar />
       <div className="Update-post-container-complete">
         <div className="Update-post-container">
-          <p className="Update-post-container-name">Update your note</p>
+          <p className="Update-post-container-name">Update Your Note</p>
           <form
             onSubmit={UpdateNoteHandler}
             className="Update-post-container-form"
           >
             <div className="Update-post-input-box">
-              <p className="Update-post-input-heading">Note name</p>
+              <p className="Update-post-input-heading">Note Name</p>
               <input
                 type="text"
-                placeholder="notename"
+                placeholder="Enter note name"
                 onChange={(e) => setnotename(e.target.value)}
                 className="Update-post-input-block"
               ></input>
             </div>
 
             <div className="Update-post-input-box">
-              <p className="Update-post-input-heading">Descritpion</p>
+              <p className="Update-post-input-heading">Description</p>
               <input
                 type="text"
-                placeholder="Descritpion"
+                placeholder="Enter description"
                 onChange={(e) => setdesc(e.target.value)}
                 className="Update-post-input-block"
               ></input>
             </div>
 
             <div className="Update-post-input-box">
-              <p className="Update-post-input-heading">Note file Url</p>
-              <input
-                type="text"
-                className="Update-post-input-block"
-                placeholder="note file url(file must be in pdf format)"
-                onChange={(e) => setnoteupdatedfile(e.target.value)}
-              ></input>
-            </div>
-
-            <div className="Update-post-input-box-file">
-              <p className="Update-post-input-heading-file">Thumbnail file</p>
-              <input
-                type="file"
-                className="Update-post-input-block-file"
-                accept=".png,.jpeg,.jpg"
-                onChange={(e) => setnoteupdatedphoto(e.target.files[0])}
-              ></input>
-            </div>
-            <button type="submit" className="Update-post-container-form-submit">
-              Update-Note
-            </button>
-          </form>
-        </div>
-      </div>
-    </>
-  );
-}
-
-export default UpdatePost;
+              <p className="Update-post-input-heading">Note File URL</p>
