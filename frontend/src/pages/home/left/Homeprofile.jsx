@@ -23,74 +23,72 @@ const Homeprofile = () => {
     }
 
     return (
-        <> 
+        <div className="homeprofile-container">
             {/* User Profile Section */}
-            <div className="leftmost-topbar">
+            <div className="homeprofile-header">
                 <Link 
                     to={user ? `/profile/${user._id}` : `/`} 
-                    style={{ textDecoration: "none", color: "black" }} 
-                    className="topbar-img-username"
+                    className="homeprofile-user-link"
                 >
                     <img 
                         src={(user && user.profilePicture) ? user.profilePicture : pf + "DefaultPic.png"} 
                         alt="Profile" 
-                        className="topbar-menu-Img" 
+                        className="homeprofile-avatar" 
                     />
-                    <p className="menu-username" style={{ textAlign: "center" }}>
+                    <p className="homeprofile-username">
                         {user?.username}
                     </p>
                 </Link>
             </div>
             
             {/* Navigation Menu */}
-            <div className="leftmost-desc">
-                <Link to={`/`} style={{ textDecoration: "none" }} className="profile-link-icons">
-                    <div className="menuItem">
-                        <Home />
-                        <p className="leftmost-links">Home</p> 
+            <div className="homeprofile-menu">
+                <Link to={`/`} className="homeprofile-menu-item">
+                    <div className="homeprofile-menu-content">
+                        <Home className="homeprofile-icon" />
+                        <span className="homeprofile-menu-text">Home</span> 
                     </div>     
                 </Link>
                 
                 <Link 
                     to={user ? `/profile/${user._id}` : `/`} 
-                    style={{ textDecoration: "none", color: "#214368" }} 
-                    className="profile-link-icons"
+                    className="homeprofile-menu-item"
                 >
-                    <div className="menuItem">
-                        <AccountCircle />
-                        <p className="leftmost-links">View Profile</p> 
+                    <div className="homeprofile-menu-content">
+                        <AccountCircle className="homeprofile-icon" />
+                        <span className="homeprofile-menu-text">View Profile</span> 
                     </div>     
                 </Link>
                 
                 <Link 
                     to={`/messenger`} 
-                    style={{ textDecoration: "none", color: "#38393b" }} 
-                    className="profile-link-icons"
+                    className="homeprofile-menu-item"
                 >
-                    <div className="menuItem">
-                        <Chat style={{ color: "rgb(43, 68, 97)" }}/>
-                        <p className="leftmost-links">Chat</p>
+                    <div className="homeprofile-menu-content">
+                        <Chat className="homeprofile-icon chat-icon" />
+                        <span className="homeprofile-menu-text">Chat</span>
                     </div>
                 </Link>
                 
                 <Link 
                     to={`/profile/update`} 
-                    style={{ textDecoration: "none" }} 
-                    className="profile-link-icons"
+                    className="homeprofile-menu-item"
                 >
-                    <div className="menuItem">
-                        <Settings />
-                        <p className="leftmost-links">Setting</p>
+                    <div className="homeprofile-menu-content">
+                        <Settings className="homeprofile-icon" />
+                        <span className="homeprofile-menu-text">Setting</span>
                     </div>
                 </Link>
                 
                 {/* Logout Button */}
-                <div className="menuItem" id="topbar-logout" onClick={logouthandler}>
-                    <ExitToApp />
-                    <p className="leftmost-links">Logout</p>
+                <div className="homeprofile-menu-item logout-item" onClick={logouthandler}>
+                    <div className="homeprofile-menu-content">
+                        <ExitToApp className="homeprofile-icon" />
+                        <span className="homeprofile-menu-text">Logout</span>
+                    </div>
                 </div> 
             </div>
-        </>
+        </div>
     );
 };
 
