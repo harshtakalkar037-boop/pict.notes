@@ -251,3 +251,24 @@
     font-size: 12px;
   }
 }
+* {
+  box-sizing: border-box;
+  padding: 0%;
+  margin: 0%;
+}
+.profile-container {
+  width: 100%;
+  padding-left: 10vw;
+  padding-right: 10vw;
+  padding-top: 4vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+}
+.profile-top {
+  display: flex;
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+/* ... rest of your Profile.css content ... */
