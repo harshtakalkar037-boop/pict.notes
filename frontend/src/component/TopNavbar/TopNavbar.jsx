@@ -26,7 +26,7 @@ function TopNavbar() {
       <NavbarInnerContainer>
         <LeftContainer>
           <LogoContainer>
-            <Subtitle>Pune Institute of Technology</Subtitle>
+            <Subtitle>Pune Institute of Computer Technology</Subtitle>
             <MainLogo>StudySphere</MainLogo>
           </LogoContainer>
         </LeftContainer>
