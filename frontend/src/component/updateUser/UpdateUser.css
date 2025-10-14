@@ -8,6 +8,8 @@
   padding-top: 2vh;
   align-items: center;
   justify-content: center;
+  background: #f8fafc;
+  min-height: 100vh;
 }
 .Update-profile-container {
   display: flex;
@@ -15,21 +17,23 @@
   justify-content: center;
   height: 134vh;
   width: 90vw;
-  background-color: rgba(45, 132, 254, 0.863);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   padding: 5vh 2vw;
-  border-radius: 10px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
 }
 
 .Update-profile-container-left {
-  background-color: rgb(75 162 240);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100%;
   width: 25%;
   padding: 2vh 0;
-  box-shadow: 0 6px 13px rgb(40, 114, 199);
-  border-radius: 10px;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 .Update-profile-container-left-top {
   display: flex;
@@ -42,10 +46,11 @@
   align-items: center;
 }
 .Update-profile-container-left-top-img {
-  width: 50px;
-  height: 50px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   object-fit: cover;
+  border: 3px solid rgba(255, 255, 255, 0.3);
 }
 
 .Update-profile-container-left-top-name {
@@ -54,27 +59,30 @@
   font-size: 20px;
   font-weight: 600;
   color: white;
+  margin-top: 10px;
 }
 .Update-profile-container-left-top-username {
   font-size: 15px;
   font-weight: 300;
-  color: white;
+  color: rgba(255, 255, 255, 0.8);
 }
 .Update-profile-container-right {
   height: 100%;
   width: 75%;
-  border-radius: 10px;
-  background-color: white;
+  border-radius: 15px;
+  background: white;
   display: flex;
   flex-direction: column;
-  padding: 2vh 2vh;
-  box-shadow: 0 6px 13px rgb(155, 169, 184);
+  padding: 3vh 3vh;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  margin-left: 20px;
 }
 .Update-profile-container-right-heading {
-  font-size: 30px;
-  color: cadetblue;
+  font-size: 28px;
+  color: #2d3748;
   font-weight: 600;
   text-align: center;
+  margin-bottom: 30px;
 }
 .Update-profile-container-right-form {
   display: flex;
@@ -88,41 +96,51 @@
   margin-bottom: 2vh;
 }
 .input-block {
-  height: 6vh;
+  height: 50px;
   width: 95%;
-  border: 1px solid grey;
-  border-radius: 5px;
-  padding: 3px 1vw;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 15px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+.input-block:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  outline: none;
 }
 .input-heading {
   font-size: 14px;
-  font-weight: 500;
-  margin-bottom: 0;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #4a5568;
 }
 
 .Update-profile-container-right-form-submit {
-  background-color:  #3E8DE3;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
-  border: 1px solid grey;
+  border: none;
   border-radius: 10px;
-  font-size: 20px;
-  font-weight: 300;
-   width: 25%;
-  padding: 2vh;
+  font-size: 18px;
+  font-weight: 600;
+  width: 200px;
+  padding: 15px 20px;
   cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+.Update-profile-container-right-form-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
 }
 .Update-profile-container-right-form-submit:active {
-  font-size: 26px;
-}
-.Update-profile-container-right-form-submit {
-  background-color:  #3E8DE3;
-  box-shadow: 0 6px 13px grey;
-  font-size: 22px;
+  transform: translateY(0);
 }
 @media only screen and (max-width: 768px) {
   .Update-profile-container {
     width: 97vw;
     height: 125vh;
+    flex-direction: column;
   }
   .Update-profile-container-left {
     display: none;
@@ -133,22 +151,23 @@
   .Update-profile-container-right {
     padding: 2vh 4vh;
     width: 100%;
+    margin-left: 0;
   }
   .Update-profile-container-right-heading {
-    font-size: 18px;
+    font-size: 22px;
   }
 
   .input-block {
     font-size: 16px;
-    height: 5vh;
+    height: 45px;
   }
   .Update-profile-container-right-form-submit {
-    font-size: 15px;
-    padding: 2vh;
-    width: 40%;
+    font-size: 16px;
+    padding: 12px;
+    width: 100%;
   }
   #input-bloack-file {
-    font-size: 12px;
+    font-size: 14px;
     width: 100%;
   }
 }
