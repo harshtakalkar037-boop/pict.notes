@@ -7,7 +7,7 @@ import { publicRequest } from "../../requestMethods";
 import { useSelector } from "react-redux";
 import Navbar from '../Navbar';
 const UpdateUser = () => {
-  const pf = "https://pict-notes.onrender.com/";
+  const pf = "https://pictnotes.onrender.com/";
   const { currentUser: user } = useSelector((state) => state.user);
   const [firstname, setfirstname] = useState();
   const [lastname, setlastname] = useState();
@@ -41,10 +41,11 @@ const UpdateUser = () => {
     }
     try {
       await publicRequest.put(`users/${user._id}`, newUser);
-      alert("successfully uploaded...");
+      alert("Profile updated successfully!");
       navigate("/");
     } catch (err) {
       console.log(err);
+      alert("Error updating profile. Please try again.");
     }
   };
 
@@ -62,7 +63,8 @@ const UpdateUser = () => {
                     : pf + "DefaultPic.png"
                 }
                 className="Update-profile-container-left-top-img"
-              ></img>
+                alt="Profile"
+              />
 
               <div className="Update-profile-container-left-top-user-desc">
                 <p className="Update-profile-container-left-top-name">
@@ -77,63 +79,57 @@ const UpdateUser = () => {
 
           <div className="Update-profile-container-right">
             <p className="Update-profile-container-right-heading">
-              Your Personal Profile Info
+              Update Your Profile
             </p>
             <form
               onSubmit={UpdateFormHandler}
               className="Update-profile-container-right-form"
             >
               <div className="input-box">
-                <p className="input-heading">first name</p>
+                <p className="input-heading">First Name</p>
                 <input
                   type="text"
-                  placeholder="firstname"
+                  placeholder="Enter first name"
                   onChange={(e) => setfirstname(e.target.value)}
                   className="input-block"
                 ></input>
               </div>
 
               <div className="input-box">
-                <p className="input-heading">last name</p>
+                <p className="input-heading">Last Name</p>
                 <input
                   type="text"
-                  placeholder="lastname"
+                  placeholder="Enter last name"
                   onChange={(e) => setlastname(e.target.value)}
                   className="input-block"
                 ></input>
               </div>
 
-              
-
-             
-
               <div className="input-box">
                 <p className="input-heading">Institution</p>
                 <input
                   type="text"
-                  placeholder="institution"
+                  placeholder="Enter your institution"
                   onChange={(e) => setinstitution(e.target.value)}
                   className="input-block"
                 ></input>
               </div>
 
               <div className="input-box">
-                <p className="input-heading">Interested field</p>
+                <p className="input-heading">Interested Field</p>
                 <input
                   type="text"
-                  placeholder="eg. physics,coding,biology..."
+                  placeholder="e.g. Physics, Coding, Biology..."
                   onChange={(e) => setinterested(e.target.value)}
                   className="input-block"
                 ></input>
               </div>
 
-              
-
               <div className="input-box">
-                <p className="input-heading">Update your password</p>
+                <p className="input-heading">Update Password</p>
                 <input
                   type="password"
-                  placeholder="not required"
+                  placeholder="Leave blank to keep current password"
                   onChange={(e) => setpassword(e.target.value)}
                   minLength="6"
                   className="input-block"
@@ -141,14 +137,14 @@ const UpdateUser = () => {
               </div>
 
               <div className="input-box">
-                <p className="input-heading">Profile picture</p>
+                <p className="input-heading">Profile Picture</p>
                 <input
                   type="file"
                   className="input-block"
                   id="input-bloack-file"
                   accept=".png,.jpeg,.jpg"
                   onChange={(e) => setphoto(e.target.files[0])}
-                  style={{ border: "none", borderRadius: "0%" }}
+                  style={{ border: "none", borderRadius: "0%", padding: "8px" }}
                 ></input>
               </div>
 
@@ -156,7 +152,7 @@ const UpdateUser = () => {
                 type="submit"
                 className="Update-profile-container-right-form-submit"
               >
-                Update-profile
+                Update Profile
               </button>
             </form>
           </div>
