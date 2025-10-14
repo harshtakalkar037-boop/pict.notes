@@ -7,7 +7,7 @@ import "./HomeProfile.css";
 import '../../../component/topbar/Topbar.css';
 
 const Homeprofile = () => {
-    const pf = "https://pict-notes-home.onrender.com/";
+    const pf = "https://pict-notes.onrender.com/";
     
     const { currentUser, isFetching } = useSelector((state) => state.user);
     const user = currentUser;
