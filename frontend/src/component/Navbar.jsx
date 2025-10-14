@@ -188,7 +188,7 @@ const Navbar = () => {
         <Center>
           <Link to="/" style={{ textDecoration: "none" }}>
             <LogoContainer>
-              <InstitutionName>Pune Institute of Technology</InstitutionName>
+              <InstitutionName>Pune Institute of Computer Technology</InstitutionName>
               <Logo>StudySphere</Logo>
             </LogoContainer>
           </Link>
